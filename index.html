@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Glow League Racing</title>
+  <style>
+    body {
+      background: #0d1117;
+      color: #a6e1fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; padding: 0;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      color: #70f0d8; /* tyrkysova */
+      margin: 0 0 10px 0;
+    }
+    h2 {
+      color: #b47cff; /* fialova */
+      cursor: pointer;
+      user-select: none;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    .clickable-title {
+      background: #161b22;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      color: #70f0d8;
+      font-weight: bold;
+    }
+    .toggle-content {
+      background: #161b22;
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 20px;
+      display: none;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #cbd5e1;
+    }
+    th, td {
+      border: 1px solid #2d3748;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background: #2d3748;
+      color: #b47cff;
+    }
+    tr:hover {
+      background-color: #2a2f3a;
+    }
+    a.button {
+      background: #70f0d8;
+      color: #0d1117;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    a.button:hover {
+      background: #4bd8c7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="formule_neon.png" alt="Glow League Logo" />
+    <h1>Glow League Racing</h1>
+    <p>Virtuální F1 esport liga založená v roce 2024. Soutěžíme v simulovaných Grand Prix závodech.</p>
+    <a href="https://discord.gg/f9ucGtfc" target="_blank" rel="noopener noreferrer" class="button">Připoj se na Discord</a>
+  </header>
+
+  <main>
+    <section>
+      <h2 onclick="toggleVisibility('races')">Kalendář závodů a výsledky (klikni pro zobrazení)</h2>
+      <div id="races" class="toggle-content">
+        <div class="clickable-title" onclick="toggleVisibility('race1')">Singapur</div>
+        <div id="race1" class="toggle-content">
+          <p>🥇 Náhlovský</p>
+          <p>🥈 Svat</p>
+          <p>🥉 Loudil</p>
+        </div>
+
+        <div class="clickable-title" onclick="toggleVisibility('race2')">Itálie (Imola)</div>
+        <div id="race2" class="toggle-content">
+          <p>🥇 Zahálka</p>
+          <p>🥈 Loudil</p>
+          <p>🥉 Nik</p>
+        </div>
+
+        <div class="clickable-title" onclick="toggleVisibility('race3')">Belgie</div>
+        <div id="race3" class="toggle-content">
+          <p>🥇 Zahálka</p>
+          <p>🥈 Svat</p>
+          <p>🥉 Náhlovský</p>
+        </div>
+
+        <div class="clickable-title" onclick="toggleVisibility('race4')">Baku</div>
+        <div id="race4" class="toggle-content">
+          <p>🥇 Zahálka</p>
+          <p>🥈 Loudil</p>
+          <p>🥉 Borko</p>
+        </div>
+
+        <div class="clickable-title" onclick="toggleVisibility('race5')">Japonsko</div>
+        <div id="race5" class="toggle-content">
+          <p>🥇 Korkobec</p>
+          <p>🥈 Drost</p>
+          <p>🥉 Turek</p>
+        </div>
+
+        <div class="clickable-title" onclick="toggleVisibility('race6')">Maďarsko</div>
+        <div id="race6" class="toggle-content">
+          <p>🥇 Svat</p>
+          <p>🥈 Borko</p>
+          <p>🥉 Zahálka</p>
+        </div>
+
+        <div class="clickable-title" onclick="toggleVisibility('race7')">Británie</div>
+        <div id="race7" class="toggle-content">
+          <p>🥇 Loudil</p>
+          <p>🥈 Zahálka</p>
+          <p>🥉 Neubauer</p>
+        </div>
+
+        <div class="clickable-title" onclick="toggleVisibility('race8')">Portugalsko</div>
+        <div id="race8" class="toggle-content">
+          <p>🥇 Svat</p>
+          <p>🥈 Zahálka</p>
+          <p>🥉 Borko</p>
+        </div>
+
+        <div class="clickable-title" onclick="toggleVisibility('race9')">Las Vegas</div>
+        <div id="race9" class="toggle-content">
+          <p>🥇 Zahálka</p>
+          <p>🥈 Kubel</p>
+          <p>🥉 Svat</p>
+        </div>
+
+        <div class="clickable-title" onclick="toggleVisibility('race10')">Abu Dhabi</div>
+        <div id="race10" class="toggle-content">
+          <p>🥇 Borko</p>
+          <p>🥈 Ondřejka</p>
+          <p>🥉 Kubel</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 onclick="toggleVisibility('standings')">Statistiky jezdců (klikni pro zobrazení)</h2>
+      <div id="standings" class="toggle-content">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Jezdec</th>
+              <th>Tým</th>
+              <th>Body</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1.</td><td>Zahálka</td><td>RB</td><td>211</td></tr>
+            <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
+            <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
+            <tr><td>4.</td><td>Borko</td><td>RB</td><td>122</td></tr>
+            <tr><td>5.</td><td>Neubauer</td><td>Red Bull</td><td>89</td></tr>
+            <tr><td>6.</td><td>Drozd</td><td>Alpine</td><td>69</td></tr>
+            <tr><td>7.</td><td>Vaňko</td><td>Mercedes</td><td>68</td></tr>
+            <tr><td>8.</td><td>Korkobec</td><td>Aston Martin</td><td>62</td></tr>
+            <tr><td>9.</td><td>Náhlovský</td><td>Mercedes</td><td>60</td></tr>
+            <tr><td>10.</td><td>Beran</td><td>Red Bull</td><td>57</td></tr>
+            <tr><td>11.</td><td>Košek</td><td>McLaren</td><td>57</td></tr>
+            <tr><td>12.</td><td>Čermák</td><td>Alpine</td><td>53</td></tr>
+            <tr><td>13.</td><td>Nic</td><td>Aston Martin</td><td>52</td></tr>
+            <tr><td>14.</td><td>Valášek</td><td>Ferrari</td><td>47</td></tr>
+            <tr><td>15.</td><td>Jirčík</td><td>Haas</td><td>42</td></tr>
+            <tr><td>16.</td><td>Jarschel</td><td>Stake</td><td>36</td></tr>
+            <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
+            <tr><td>18.</td><td>Ondrejka</td><td>Rezerva</td><td>33</td></tr>
+            <tr><td>19.</td><td>Kubel</td><td>Rezerva</td><td>25</td></tr>
+            <tr><td>20.</td><td>Stašík</td><td>Williams</td><td>25</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2 onclick="toggleVisibility('history')">Historie ligy (klikni pro zobrazení)</h2>
+      <div id="history" class="toggle-content">
+        <p>Liga byla založena v roce 2024 a od té doby se konalo již 10 velkých závodů po celém světě. Naše komunita roste a soutěživost je stále větší. Díky všem závodníkům za skvělou sezónu!</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleVisibility(id) {
+      const el = document.getElementById(id);
+      if (el.style.display === 'block') {
+        el.style.display = 'none';
+      } else {
+        el.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
