@@ -21,6 +21,7 @@
     header {
       text-align: center;
       margin-bottom: 40px;
+      position: relative;
     }
 
     header img {
@@ -59,6 +60,7 @@
       text-decoration: none;
       display: inline-block;
       user-select: none;
+      margin-bottom: 20px;
     }
 
     .button:hover {
@@ -79,6 +81,18 @@
       user-select: none;
       margin-bottom: 15px;
       text-shadow: 0 0 6px #b47cffaa;
+      border-radius: 12px;
+      padding: 8px 15px;
+      background: #203a43cc;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 0 10px #70f0d8aa;
+      display: inline-block;
+    }
+
+    h2:hover {
+      background: #70f0d8cc;
+      color: #203a43;
+      box-shadow: 0 0 15px #b47cffcc;
     }
 
     .clickable-title {
@@ -92,6 +106,7 @@
       user-select: none;
       transition: background-color 0.3s ease;
       box-shadow: 0 0 10px #70f0d8aa;
+      display: inline-block;
     }
 
     .clickable-title:hover {
@@ -154,136 +169,189 @@
       margin-bottom: 40px;
       user-select: none;
     }
+
+    /* News preview above header */
+    .news-preview {
+      background: linear-gradient(135deg, #b47cffcc, #70f0d8cc);
+      color: #0f2027;
+      padding: 15px 25px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px #b47cffaa;
+      cursor: pointer;
+      user-select: none;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .news-preview:hover {
+      background: linear-gradient(135deg, #70f0d8cc, #b47cffcc);
+      color: #203a43;
+      box-shadow: 0 0 25px #70f0d8ff;
+    }
+
+    /* Social links container */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 15px;
+      user-select: none;
+    }
+
+    .social-link {
+      color: #70f0d8;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 15px;
+      border-radius: 25px;
+      background: #203a43cc;
+      box-shadow: 0 0 10px #70f0d8aa;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: #70f0d8cc;
+      color: #203a43;
+      box-shadow: 0 0 15px #b47cffcc;
+      text-decoration: none;
+    }
+
+    /* Simple SVG icon style */
+    .icon {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Cooperation box */
+    .cooperation {
+      background: linear-gradient(135deg, #b47cffcc, #70f0d8cc);
+      padding: 15px 20px;
+      border-radius: 20px;
+      color: #0f2027;
+      font-weight: 700;
+      font-size: 1rem;
+      text-align: center;
+      box-shadow: 0 0 20px #b47cffaa;
+      margin-bottom: 40px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cooperation img {
+      height: 40px;
+      filter: drop-shadow(0 0 5px #203a43);
+      user-select: none;
+    }
+
+    .cooperation-text {
+      color: #0f2027;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-shadow: 0 0 6px #70f0d8aa;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      header img {
+        width: 100px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .social-links {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .social-link {
+        justify-content: center;
+      }
+      .cooperation {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Nadpis první zprávy nad headerem -->
+  <div id="news-preview" class="news-preview clickable-title" onclick="toggleVisibility('news-full')">
+    Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu
+  </div>
+
   <header>
     <img src="formule_neon.png" alt="Glow League Logo" />
     <h1>Glow League Racing</h1>
-    <p class="description">Virtuální F1 esport liga založená v roce 2024. Soutěžíme v simulovaných Grand Prix závodech.</p>
+
+    <!-- Social links Instagram a YouTube -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/glow_league_racing" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Glow League Racing">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5a3.75 3.75 0 0 0 3.75-3.75v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm8.75 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-4.75 2a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5Zm0 2a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 0 0 0-5.5Z"/></svg>
+        @glow_league_racing
+      </a>
+      <a href="https://www.youtube.com/@GlowLeagueRacing" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube Glow League Racing">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 15l5.19-3L10 9v6Zm11-6.44a3.25 3.25 0 0 0-2.29-2.3C17.47 6 12 6 12 6s-5.47 0-6.71.26a3.25 3.25 0 0 0-2.29 2.3A34.33 34.33 0 0 0 2 12a34.33 34.33 0 0 0 .94 3.44 3.25 3.25 0 0 0 2.3 2.3C6.53 18 12 18 12 18s5.47 0 6.71-.26a3.25 3.25 0 0 0 2.29-2.3A34.33 34.33 0 0 0 22 12a34.33 34.33 0 0 0-.94-3.44Z"/></svg>
+        @GlowLeagueRacing
+      </a>
+    </div>
+
+    <!-- Spolupráce -->
+    <div class="cooperation">
+      <img src="starprint_logo.png" alt="StarPrint Logo" />
+      <div class="cooperation-text">
+        Spolupráce se StarPrint — <a href="https://www.instagram.com/3dstarprint_sk" target="_blank" rel="noopener noreferrer" style="color:#203a43; font-weight:700; text-decoration: underline;">@3dstarprint_sk</a>
+      </div>
+    </div>
+
+    <p class="description">
+      Virtuální F1 esport liga založená v roce 2024. Soutěžíme v simulovaných Grand Prix závodech.
+    </p>
+
     <a href="https://discord.gg/f9ucGtfc" target="_blank" rel="noopener noreferrer" class="button">Připoj se na Discord</a>
   </header>
 
   <main>
-    <div class="news-box">NEWS: Sekce se právě připravuje, brzy nové informace!</div>
-
+    <!-- News sekce -->
     <section>
-      <h2 onclick="toggleVisibility('races')">Kalendář závodů a výsledky</h2>
-      <div id="races" class="toggle-content">
-        <div class="clickable-title" onclick="toggleVisibility('race1')">Singapur</div>
-        <div id="race1" class="toggle-content">
-          <p>🥇 Náhlovský</p>
-          <p>🥈 Svat</p>
-          <p>🥉 Loudil</p>
-        </div>
-
-        <div class="clickable-title" onclick="toggleVisibility('race2')">Itálie (Imola)</div>
-        <div id="race2" class="toggle-content">
-          <p>🥇 Zahálka</p>
-          <p>🥈 Loudil</p>
-          <p>🥉 Nik</p>
-        </div>
-
-        <div class="clickable-title" onclick="toggleVisibility('race3')">Belgie</div>
-        <div id="race3" class="toggle-content">
-          <p>🥇 Zahálka</p>
-          <p>🥈 Svat</p>
-          <p>🥉 Náhlovský</p>
-        </div>
-
-        <div class="clickable-title" onclick="toggleVisibility('race4')">Baku</div>
-        <div id="race4" class="toggle-content">
-          <p>🥇 Zahálka</p>
-          <p>🥈 Loudil</p>
-          <p>🥉 Borko</p>
-        </div>
-
-        <div class="clickable-title" onclick="toggleVisibility('race5')">Japonsko</div>
-        <div id="race5" class="toggle-content">
-          <p>🥇 Korkobec</p>
-          <p>🥈 Drost</p>
-          <p>🥉 Turek</p>
-        </div>
-
-        <div class="clickable-title" onclick="toggleVisibility('race6')">Maďarsko</div>
-        <div id="race6" class="toggle-content">
-          <p>🥇 Svat</p>
-          <p>🥈 Borko</p>
-          <p>🥉 Zahálka</p>
-        </div>
-
-        <div class="clickable-title" onclick="toggleVisibility('race7')">Británie</div>
-        <div id="race7" class="toggle-content">
-          <p>🥇 Loudil</p>
-          <p>🥈 Zahálka</p>
-          <p>🥉 Neubauer</p>
-        </div>
-
-        <div class="clickable-title" onclick="toggleVisibility('race8')">Portugalsko</div>
-        <div id="race8" class="toggle-content">
-          <p>🥇 Svat</p>
-          <p>🥈 Zahálka</p>
-          <p>🥉 Borko</p>
-        </div>
-
-        <div class="clickable-title" onclick="toggleVisibility('race9')">Las Vegas</div>
-        <div id="race9" class="toggle-content">
-          <p>🥇 Zahálka</p>
-          <p>🥈 Kubel</p>
-          <p>🥉 Svat</p>
-        </div>
-
-        <div class="clickable-title" onclick="toggleVisibility('race10')">Abu Dhabi</div>
-        <div id="race10" class="toggle-content">
-          <p>🥇 Borko</p>
-          <p>🥈 Ondřejka</p>
-          <p>🥉 Kubel</p>
-        </div>
+      <h2 class="clickable-title" onclick="toggleVisibility('news-full')">News</h2>
+      <div id="news-full" class="toggle-content">
+        <p><strong>Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu</strong></p>
+        <p>Tomáš Stašík bude obhajovat modré barvy a otazníky pořad zůstávají nad hlavními sedačkami. Tomáš Ševčík pořád neoznámil, že bude pokračovat, a zprávy o Kubičkovi nebyly nijak potvrzeny.</p>
       </div>
     </section>
 
+    <!-- Šampioni -->
     <section>
-      <h2 onclick="toggleVisibility('standings')">Statistiky jezdců</h2>
-      <div id="standings" class="toggle-content">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Jezdec</th>
-              <th>Tým</th>
-              <th>Body</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1.</td><td>Zahálka</td><td>RB</td><td>211</td></tr>
-            <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
-            <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
-            <tr><td>4.</td><td>Borko</td><td>RB</td><td>122</td></tr>
-            <tr><td>5.</td><td>Neubauer</td><td>Red Bull</td><td>89</td></tr>
-            <tr><td>6.</td><td>Drozd</td><td>Alpine</td><td>69</td></tr>
-            <tr><td>7.</td><td>Vaňko</td><td>Mercedes</td><td>68</td></tr>
-            <tr><td>8.</td><td>Korkobec</td><td>Aston Martin</td><td>62</td></tr>
-            <tr><td>9.</td><td>Náhlovský</td><td>Mercedes</td><td>60</td></tr>
-            <tr><td>10.</td><td>Beran</td><td>Red Bull</td><td>57</td></tr>
-            <tr><td>11.</td><td>Košek</td><td>McLaren</td><td>57</td></tr>
-            <tr><td>12.</td><td>Čermák</td><td>Alpine</td><td>53</td></tr>
-            <tr><td>13.</td><td>Nic</td><td>Aston Martin</td><td>52</td></tr>
-            <tr><td>14.</td><td>Valášek</td><td>Ferrari</td><td>47</td></tr>
-            <tr><td>15.</td><td>Jirčík</td><td>Haas</td><td>42</td></tr>
-            <tr><td>16.</td><td>Jarschel</td><td>Sauber</td><td>36</td></tr>
-            <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
-            <tr><td>18.</td><td>Ondrejka</td><td>Rezerva</td><td>33</td></tr>
-            <tr><td>19.</td><td>Kubel</td><td>Rezerva</td><td>25</td></tr>
-            <tr><td>20.</td><td>Stašík</td><td>Williams</td><td>25</td></tr>
-          </tbody>
-        </table>
+      <h2 class="clickable-title" onclick="toggleVisibility('champions')">Šampioni</h2>
+      <div id="champions" class="toggle-content">
+        <p><strong>Daniel Borko</strong> – 1.–3. sezóna (Mercedes, Red Bull)</p>
+        <p><strong>Ondřej Zahálka</strong> – 4. sezóna (Red Bull)</p>
       </div>
     </section>
 
+    <!-- Velké milníky -->
     <section>
-      <h2 onclick="toggleVisibility('history')">Historie ligy</h2>
-      <div id="history" class="toggle-content">
-        <p>Liga byla založena v roce 2024,1.9.24 jsme odjeli 1. závod v GLR ve kterém zvítězil Jakub Mahr,od té doby se konali 4 sezony.Naše komunita roste a soutěživost je stále větší.Dodnes je neujúspěšnějším Daniel Borko ze 3 Šampionáty</p>
+      <h2 class="clickable-title" onclick="toggleVisibility('milestones')">VELKÉ MILNÍKY</h2>
+      <div id="milestones" class="toggle-content">
+        <p>Zde můžeš doplnit klíčové momenty ligy, významné závody nebo rekordy.</p>
       </div>
     </section>
   </main>
@@ -300,4 +368,3 @@
   </script>
 </body>
 </html>
-
