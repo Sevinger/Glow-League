@@ -1,172 +1,130 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Glow League Racing</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background: linear-gradient(to right, #1f1c2c, #928dab);
       color: white;
     }
-
     header {
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      border-bottom: 2px solid #4f46e5;
+      align-items: center;
+      flex-wrap: wrap;
     }
-
-    .logo {
-      height: 60px;
+    header img.logo {
+      height: 50px;
     }
-
     .socials {
-      text-align: right;
+      display: flex;
+      gap: 20px;
+      align-items: center;
     }
-
-    .socials p {
-      margin: 0;
-      font-size: 0.9rem;
-    }
-
-    main {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    h1, h2, h3 {
-      color: #a5b4fc;
-    }
-
-    .highlight-news {
-      background: rgba(79, 70, 229, 0.7);
-      padding: 1rem;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-      text-align: center;
-      font-size: 1.3rem;
-    }
-
-    section {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1rem 1.5rem;
-      border-radius: 1rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-
-    .clickable-title {
+    .socials a {
+      color: white;
+      text-decoration: none;
       font-weight: bold;
-      cursor: pointer;
-      margin-top: 1rem;
-      background: #3b82f6;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      display: inline-block;
     }
-
+    .starprint-logo {
+      height: 40px;
+    }
+    .announcement {
+      width: 100%;
+      text-align: center;
+      background: linear-gradient(90deg, #7b00ff, #00c6ff);
+      color: white;
+      font-size: 1.5em;
+      font-weight: bold;
+      padding: 10px 0;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    main {
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #fff;
+      border-bottom: 2px solid #444;
+      padding-bottom: 5px;
+    }
+    .highlight-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 15px;
+      margin: 15px 0;
+    }
     .toggle-content {
       display: none;
-      margin-top: 0.5rem;
+      margin-top: 10px;
     }
-
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 1rem;
+      margin-top: 10px;
     }
-
+    table, th, td {
+      border: 1px solid #555;
+    }
     th, td {
-      padding: 0.5rem;
+      padding: 10px;
       text-align: left;
-      border-bottom: 1px solid #555;
     }
-
-    th {
-      background-color: #1f2937;
-    }
-
-    .top3-preview {
-      display: flex;
-      gap: 2rem;
-      justify-content: space-around;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 1rem;
-      border-radius: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .top3-preview div {
-      background: #6d28d9;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      text-align: center;
-      flex: 1;
+    .clickable-title {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
+  <div class="announcement">Glow League Racing S5 – Coming Soon!</div>
   <header>
-    <img src="logo.png" alt="Glow League Racing logo" class="logo">
+    <img src="logo.png" alt="Glow League Logo" class="logo">
     <div class="socials">
-      <p>IG: @glow_league_racing</p>
-      <p>YT: @GlowLeagueRacing</p>
-      <p>Spolupráce: @3dstarprint_sk</p>
+      <a href="https://www.instagram.com/glow_league_racing" target="_blank">IG @glow_league_racing</a>
+      <a href="https://www.youtube.com/@GlowLeagueRacing" target="_blank">YT @GlowLeagueRacing</a>
+      <span>Partner: <a href="https://www.instagram.com/3dstarprint_sk" target="_blank">@3dstarprint_sk</a></span>
+      <img src="starprint.png" alt="StarPrint Logo" class="starprint-logo">
     </div>
   </header>
+
   <main>
-    <div class="highlight-news">
-      📰 Williams zveřejnil jméno rezervního jezdce pro 5. sezónu: Tomáš Stašík!
-    </div>
-
-    <div class="top3-preview">
-      <div>
-        <h3>🥇 Abu Dhabi</h3>
-        <p>1. Borko</p>
-        <p>2. Ondřejka</p>
-        <p>3. Kubel</p>
-      </div>
-      <div>
-        <h3>🥇 Las Vegas</h3>
-        <p>1. Zahálka</p>
-        <p>2. Kubel</p>
-        <p>3. Svat</p>
-      </div>
-      <div>
-        <h3>🥇 Portugalsko</h3>
-        <p>1. Svat</p>
-        <p>2. Zahálka</p>
-        <p>3. Borko</p>
-      </div>
-    </div>
+    <section class="highlight-box">
+      <h2>📲 Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu</h2>
+      <p><strong>Tomáš Stašík</strong> bude obhajovat modré barvy a otazníky pořád zůstávají nad hlavními sedačkami. Tomáš Ševčík pořád neoznámil, že bude pokračovat a zprávy o Kubičkovi nebyly nijak potvrzeny.</p>
+    </section>
 
     <section>
-      <h2 onclick="toggleVisibility('news')">Novinky</h2>
+      <h2 onclick="toggleVisibility('news')">📢 Novinky</h2>
       <div id="news" class="toggle-content">
-        <h3>Tomáš Stašík bude obhajovat modré barvy</h3>
-        <p>Otazníky zůstávají nad hlavními sedačkami. Tomáš Ševčík stále neoznámil, že bude pokračovat, a zprávy o Kubičkovi nebyly potvrzeny.</p>
+        <p>(Sem můžeš později přidat další novinky)</p>
       </div>
     </section>
 
     <section>
-      <h2 onclick="toggleVisibility('champions')">Šampioni</h2>
-      <div id="champions" class="toggle-content">
-        <ul>
-          <li>Daniel Borko – sezóny 1–3 (Mercedes, Red Bull)</li>
-          <li>Ondřej Zahálka – sezóna 4 (RB)</li>
-        </ul>
+      <h2>🏆 Šampioni</h2>
+      <div class="highlight-box">
+        <p><strong>Daniel Borko</strong> – Sezóny 1–3 (<em>Mercedes, Red Bull</em>)</p>
+        <p><strong>Ondřej Zahálka</strong> – Sezóna 4 (<em>RB</em>)</p>
       </div>
     </section>
 
     <section>
-      <h2 onclick="toggleVisibility('standings')">Statistiky jezdců</h2>
+      <h2 onclick="toggleVisibility('standings')">📊 Statistiky jezdců</h2>
       <div id="standings" class="toggle-content">
         <table>
           <thead>
@@ -202,15 +160,15 @@
         </table>
       </div>
     </section>
-
-    <script>
-      function toggleVisibility(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
-      }
-    </script>
   </main>
+
+  <script>
+    function toggleVisibility(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 </body>
 </html>
 
