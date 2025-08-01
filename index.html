@@ -5,81 +5,154 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Glow League Racing</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
     body {
-      background: #0d1117;
-      color: #a6e1fa;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0; padding: 0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0f7fa;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
-      padding: 20px;
     }
+
     header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
+
     header img {
-      width: 120px;
-      margin-bottom: 10px;
+      width: 140px;
+      filter: drop-shadow(0 0 10px #70f0d8);
+      margin-bottom: 15px;
     }
+
     h1 {
-      color: #70f0d8; /* tyrkysova */
+      color: #70f0d8; /* tyrkysová */
       margin: 0 0 10px 0;
+      text-shadow: 0 0 8px #70f0d8;
+      font-weight: 700;
+      font-size: 2.8rem;
     }
+
+    p.description {
+      font-size: 1.1rem;
+      color: #b2ebf2;
+      margin-top: 0;
+      margin-bottom: 25px;
+      text-shadow: 0 0 6px #70f0d8aa;
+    }
+
+    .button {
+      background: linear-gradient(135deg, #70f0d8, #b47cff);
+      border: none;
+      border-radius: 25px;
+      padding: 14px 32px;
+      color: #0f2027;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 6px 15px #b47cffaa;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      user-select: none;
+    }
+
+    .button:hover {
+      background: linear-gradient(135deg, #b47cff, #70f0d8);
+      box-shadow: 0 8px 20px #70f0d8cc;
+      color: #fff;
+    }
+
+    main section {
+      margin-bottom: 40px;
+    }
+
     h2 {
-      color: #b47cff; /* fialova */
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #b47cff;
       cursor: pointer;
       user-select: none;
-      margin-top: 30px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #b47cffaa;
     }
+
     .clickable-title {
-      background: #161b22;
-      padding: 10px;
-      border-radius: 6px;
-      margin-bottom: 10px;
+      background: #203a43cc;
+      padding: 10px 15px;
+      border-radius: 12px;
+      margin-bottom: 8px;
       color: #70f0d8;
-      font-weight: bold;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 0 10px #70f0d8aa;
     }
+
+    .clickable-title:hover {
+      background: #70f0d8cc;
+      color: #203a43;
+      box-shadow: 0 0 15px #b47cffcc;
+    }
+
     .toggle-content {
-      background: #161b22;
-      border-radius: 6px;
-      padding: 15px;
+      background: #203a43cc;
+      border-radius: 15px;
+      padding: 18px 25px;
       margin-bottom: 20px;
       display: none;
       color: #cbd5e1;
-      font-size: 14px;
+      font-size: 1rem;
+      line-height: 1.5;
+      box-shadow: inset 0 0 10px #70f0d8aa;
+      user-select: text;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      color: #cbd5e1;
+      color: #e0f7fa;
+      font-size: 1rem;
     }
+
     th, td {
-      border: 1px solid #2d3748;
-      padding: 8px 12px;
+      border: 1px solid #4a5568;
+      padding: 10px 14px;
       text-align: left;
+      user-select: text;
     }
+
     th {
-      background: #2d3748;
-      color: #b47cff;
+      background: #6b46c1cc; /* fialová s průhledností */
+      color: #e0f7fa;
+      text-shadow: 0 0 4px #b47cffcc;
     }
+
     tr:hover {
-      background-color: #2a2f3a;
+      background-color: #2a4365cc;
     }
-    a.button {
-      background: #70f0d8;
-      color: #0d1117;
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 10px;
-      font-weight: bold;
+
+    p {
+      margin: 0.3rem 0;
     }
-    a.button:hover {
-      background: #4bd8c7;
+
+    /* News box */
+    .news-box {
+      background: linear-gradient(135deg, #b47cffcc, #70f0d8cc);
+      padding: 18px 25px;
+      border-radius: 20px;
+      color: #0f2027;
+      font-weight: 700;
+      font-size: 1.3rem;
+      text-align: center;
+      box-shadow: 0 0 20px #b47cffaa;
+      margin-bottom: 40px;
+      user-select: none;
     }
   </style>
 </head>
@@ -87,11 +160,13 @@
   <header>
     <img src="formule_neon.png" alt="Glow League Logo" />
     <h1>Glow League Racing</h1>
-    <p>Virtuální F1 esport liga založená v roce 2024. Soutěžíme v simulovaných Grand Prix závodech.</p>
+    <p class="description">Virtuální F1 esport liga založená v roce 2024. Soutěžíme v simulovaných Grand Prix závodech.</p>
     <a href="https://discord.gg/f9ucGtfc" target="_blank" rel="noopener noreferrer" class="button">Připoj se na Discord</a>
   </header>
 
   <main>
+    <div class="news-box">NEWS: Sekce se právě připravuje, brzy nové informace!</div>
+
     <section>
       <h2 onclick="toggleVisibility('races')">Kalendář závodů a výsledky (klikni pro zobrazení)</h2>
       <div id="races" class="toggle-content">
@@ -180,10 +255,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>1.</td><td>Zahálka</td><td>RB</td><td>211</td></tr>
+            <tr><td>1.</td><td>Zahálka</td><td>Red Bull</td><td>211</td></tr>
             <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
             <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
-            <tr><td>4.</td><td>Borko</td><td>RB</td><td>122</td></tr>
+            <tr><td>4.</td><td>Borko</td><td>Red Bull</td><td>122</td></tr>
             <tr><td>5.</td><td>Neubauer</td><td>Red Bull</td><td>89</td></tr>
             <tr><td>6.</td><td>Drozd</td><td>Alpine</td><td>69</td></tr>
             <tr><td>7.</td><td>Vaňko</td><td>Mercedes</td><td>68</td></tr>
@@ -194,12 +269,12 @@
             <tr><td>12.</td><td>Čermák</td><td>Alpine</td><td>53</td></tr>
             <tr><td>13.</td><td>Nic</td><td>Aston Martin</td><td>52</td></tr>
             <tr><td>14.</td><td>Valášek</td><td>Ferrari</td><td>47</td></tr>
-            <tr><td>15.</td><td>Jirčík</td><td>Haas</td><td>42</td></tr>
-            <tr><td>16.</td><td>Jarschel</td><td>Stake</td><td>36</td></tr>
-            <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
-            <tr><td>18.</td><td>Ondrejka</td><td>Rezerva</td><td>33</td></tr>
-            <tr><td>19.</td><td>Kubel</td><td>Rezerva</td><td>25</td></tr>
-            <tr><td>20.</td><td>Stašík</td><td>Williams</td><td>25</td></tr>
+            <tr><td>15.</td><td>Jirčík</td><td>McLaren</td><td>44</td></tr>
+            <tr><td>16.</td><td>Kladiva</td><td>Alpine</td><td>42</td></tr>
+            <tr><td>17.</td><td>Turek</td><td>Alfa Romeo</td><td>38</td></tr>
+            <tr><td>18.</td><td>Kubel</td><td>Alfa Romeo</td><td>36</td></tr>
+            <tr><td>19.</td><td>Ondřejka</td><td>McLaren</td><td>28</td></tr>
+            <tr><td>20.</td><td>Molnár</td><td>Alfa Romeo</td><td>23</td></tr>
           </tbody>
         </table>
       </div>
@@ -208,7 +283,7 @@
     <section>
       <h2 onclick="toggleVisibility('history')">Historie ligy (klikni pro zobrazení)</h2>
       <div id="history" class="toggle-content">
-        <p>Liga byla založena v roce 2024 a od té doby se konalo již 10 velkých závodů po celém světě. Naše komunita roste a soutěživost je stále větší. Díky všem závodníkům za skvělou sezónu!</p>
+        <p>Liga byla založena v roce 2024 a od té doby se konali 4. Naše komunita roste a soutěživost je stále větší.Dodnes je neujúspěšnějším Daniel Borko ze 3 Šampionáty</p>
       </div>
     </section>
   </main>
@@ -225,3 +300,4 @@
   </script>
 </body>
 </html>
+
