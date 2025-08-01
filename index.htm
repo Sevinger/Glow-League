@@ -70,19 +70,30 @@
       margin-bottom: 15px;
       color: #b3d9ff;
     }
-    .race-card, .stat-row {
-      background: rgba(255 255 255 / 0.1);
+    .race-title {
+      cursor: pointer;
+      padding: 10px 15px;
+      background: rgba(123, 76, 209, 0.6);
       border-radius: 8px;
-      padding: 15px 20px;
-      margin-bottom: 10px;
-      box-shadow: 0 0 5px rgba(123, 76, 209, 0.7);
+      margin-bottom: 5px;
+      user-select: none;
+      transition: background 0.3s ease;
     }
-    .race-card h3 {
-      margin: 0 0 8px;
+    .race-title:hover {
+      background: rgba(74, 198, 208, 0.8);
+    }
+    .race-results {
+      display: none;
+      margin-left: 20px;
+      margin-bottom: 15px;
+      background: rgba(255 255 255 / 0.1);
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(123, 76, 209, 0.7);
+    }
+    .race-results p {
+      margin: 5px 0;
       color: #d1e8ff;
-    }
-    .race-card p {
-      margin: 2px 0;
     }
     table {
       width: 100%;
@@ -96,11 +107,6 @@
     }
     table th {
       background: rgba(123, 76, 209, 0.4);
-    }
-    ul {
-      list-style-type: disc;
-      padding-left: 20px;
-      color: #c7e0ff;
     }
     footer {
       text-align: center;
@@ -127,68 +133,76 @@
     </section>
 
     <section>
-      <h2>Výsledky posledních závodů</h2>
-      <div>
-        <div class="race-card">
-          <h3>Singapur</h3>
-          <p>🥇 Náhlovský</p>
-          <p>🥈 Svat</p>
-          <p>🥉 Loudil</p>
-        </div>
-        <div class="race-card">
-          <h3>Itálie (Imola)</h3>
-          <p>🥇 Zahálka</p>
-          <p>🥈 Loudil</p>
-          <p>🥉 Nik</p>
-        </div>
-        <div class="race-card">
-          <h3>Belgie</h3>
-          <p>🥇 Zahálka</p>
-          <p>🥈 Svat</p>
-          <p>🥉 Náhlovský</p>
-        </div>
-        <div class="race-card">
-          <h3>Baku</h3>
-          <p>🥇 Zahálka</p>
-          <p>🥈 Loudil</p>
-          <p>🥉 Borko</p>
-        </div>
-        <div class="race-card">
-          <h3>Japonsko</h3>
-          <p>🥇 Korkobec</p>
-          <p>🥈 Drost</p>
-          <p>🥉 Turek</p>
-        </div>
-        <div class="race-card">
-          <h3>Maďarsko</h3>
-          <p>🥇 Svat</p>
-          <p>🥈 Borko</p>
-          <p>🥉 Zahálka</p>
-        </div>
-        <div class="race-card">
-          <h3>Británie</h3>
-          <p>🥇 Loudil</p>
-          <p>🥈 Zahálka</p>
-          <p>🥉 Neubauer</p>
-        </div>
-        <div class="race-card">
-          <h3>Portugalsko</h3>
-          <p>🥇 Svat</p>
-          <p>🥈 Zahálka</p>
-          <p>🥉 Borko</p>
-        </div>
-        <div class="race-card">
-          <h3>Las Vegas</h3>
-          <p>🥇 Zahálka</p>
-          <p>🥈 Kubel</p>
-          <p>🥉 Svat</p>
-        </div>
-        <div class="race-card">
-          <h3>Abu Dhabi</h3>
-          <p>🥇 Borko</p>
-          <p>🥈 Ondřejka</p>
-          <p>🥉 Kubel</p>
-        </div>
+      <h2>Výsledky posledních závodů (klikni na název závodu pro zobrazení výsledků)</h2>
+      
+      <div class="race-title" onclick="toggleResults('singapur')">Singapur</div>
+      <div id="singapur" class="race-results">
+        <p>🥇 Náhlovský</p>
+        <p>🥈 Svat</p>
+        <p>🥉 Loudil</p>
+      </div>
+
+      <div class="race-title" onclick="toggleResults('imola')">Itálie (Imola)</div>
+      <div id="imola" class="race-results">
+        <p>🥇 Zahálka</p>
+        <p>🥈 Loudil</p>
+        <p>🥉 Nik</p>
+      </div>
+
+      <div class="race-title" onclick="toggleResults('belgie')">Belgie</div>
+      <div id="belgie" class="race-results">
+        <p>🥇 Zahálka</p>
+        <p>🥈 Svat</p>
+        <p>🥉 Náhlovský</p>
+      </div>
+
+      <div class="race-title" onclick="toggleResults('baku')">Baku</div>
+      <div id="baku" class="race-results">
+        <p>🥇 Zahálka</p>
+        <p>🥈 Loudil</p>
+        <p>🥉 Borko</p>
+      </div>
+
+      <div class="race-title" onclick="toggleResults('japonsko')">Japonsko</div>
+      <div id="japonsko" class="race-results">
+        <p>🥇 Korkobec</p>
+        <p>🥈 Drost</p>
+        <p>🥉 Turek</p>
+      </div>
+
+      <div class="race-title" onclick="toggleResults('madarsko')">Maďarsko</div>
+      <div id="madarsko" class="race-results">
+        <p>🥇 Svat</p>
+        <p>🥈 Borko</p>
+        <p>🥉 Zahálka</p>
+      </div>
+
+      <div class="race-title" onclick="toggleResults('britanie')">Británie</div>
+      <div id="britanie" class="race-results">
+        <p>🥇 Loudil</p>
+        <p>🥈 Zahálka</p>
+        <p>🥉 Neubauer</p>
+      </div>
+
+      <div class="race-title" onclick="toggleResults('portugalsko')">Portugalsko</div>
+      <div id="portugalsko" class="race-results">
+        <p>🥇 Svat</p>
+        <p>🥈 Zahálka</p>
+        <p>🥉 Borko</p>
+      </div>
+
+      <div class="race-title" onclick="toggleResults('lasvegas')">Las Vegas</div>
+      <div id="lasvegas" class="race-results">
+        <p>🥇 Zahálka</p>
+        <p>🥈 Kubel</p>
+        <p>🥉 Svat</p>
+      </div>
+
+      <div class="race-title" onclick="toggleResults('abudhabi')">Abu Dhabi</div>
+      <div id="abudhabi" class="race-results">
+        <p>🥇 Borko</p>
+        <p>🥈 Ondřejka</p>
+        <p>🥉 Kubel</p>
       </div>
     </section>
 
@@ -223,5 +237,27 @@
           <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
           <tr><td>18.</td><td>Ondrejka</td><td>RD</td><td>33</td></tr>
           <tr><td>19.</td><td>Kubel</td><td>RD</td><td>25</td></tr>
-          <tr><td>20.</td><td>Staší
+          <tr><td>20.</td><td>Stašík</td><td>Stake F1</td><td>24</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Glow League Racing. Všechna práva vyhrazena.
+  </footer>
+
+  <script>
+    function toggleResults(id) {
+      const elem = document.getElementById(id);
+      if (elem.style.display === 'block') {
+        elem.style.display = 'none';
+      } else {
+        elem.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
+
 
