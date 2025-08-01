@@ -24,10 +24,63 @@
       position: relative;
     }
 
-    header img {
+    header img.logo {
       width: 140px;
       filter: drop-shadow(0 0 10px #70f0d8);
       margin-bottom: 15px;
+    }
+
+    /* Horní řádek hlavičky - sociální sítě a spolupráce */
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 20px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #70f0d8;
+      user-select: none;
+    }
+
+    .social-links a {
+      color: #70f0d8;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #b47cff;
+    }
+
+    .social-icon {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .partnership {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #b47cff;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .partnership img {
+      height: 32px;
+      filter: drop-shadow(0 0 6px #b47cffaa);
+      border-radius: 8px;
     }
 
     h1 {
@@ -38,14 +91,68 @@
       font-size: 2.8rem;
     }
 
-    p.description {
-      font-size: 1.1rem;
-      color: #b2ebf2;
-      margin-top: 0;
-      margin-bottom: 25px;
-      text-shadow: 0 0 6px #70f0d8aa;
+    /* News box nahoře s viditelným nadpisem zprávy */
+    .news-top {
+      background: linear-gradient(135deg, #b47cffcc, #70f0d8cc);
+      padding: 14px 20px;
+      border-radius: 25px;
+      color: #0f2027;
+      font-weight: 700;
+      font-size: 1.3rem;
+      text-align: center;
+      box-shadow: 0 0 20px #b47cffaa;
+      margin-bottom: 20px;
+      cursor: pointer;
+      user-select: none;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background 0.3s ease;
     }
 
+    .news-top:hover {
+      background: linear-gradient(135deg, #70f0d8cc, #b47cffcc);
+    }
+
+    /* Hlavní news sekce s více zprávami */
+    #newsSection {
+      background: linear-gradient(135deg, #b47cffcc, #70f0d8cc);
+      padding: 18px 25px;
+      border-radius: 25px;
+      color: #0f2027;
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      box-shadow: 0 0 20px #b47cffaa;
+      margin-bottom: 40px;
+      display: none;
+      user-select: text;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Šampioni sekce */
+    #championsSection {
+      background: #203a43cc;
+      border-radius: 20px;
+      padding: 20px 30px;
+      box-shadow: inset 0 0 10px #b47cffaa;
+      margin-bottom: 40px;
+      color: #cbd5e1;
+      font-weight: 700;
+      font-size: 1.2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      user-select: text;
+    }
+
+    #championsSection p {
+      margin: 0.3rem 0;
+    }
+
+    /* Button style zůstává stejný */
     .button {
       background: linear-gradient(135deg, #70f0d8, #b47cff);
       border: none;
@@ -60,7 +167,6 @@
       text-decoration: none;
       display: inline-block;
       user-select: none;
-      margin-bottom: 20px;
     }
 
     .button:hover {
@@ -81,18 +187,6 @@
       user-select: none;
       margin-bottom: 15px;
       text-shadow: 0 0 6px #b47cffaa;
-      border-radius: 12px;
-      padding: 8px 15px;
-      background: #203a43cc;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 0 10px #70f0d8aa;
-      display: inline-block;
-    }
-
-    h2:hover {
-      background: #70f0d8cc;
-      color: #203a43;
-      box-shadow: 0 0 15px #b47cffcc;
     }
 
     .clickable-title {
@@ -106,7 +200,6 @@
       user-select: none;
       transition: background-color 0.3s ease;
       box-shadow: 0 0 10px #70f0d8aa;
-      display: inline-block;
     }
 
     .clickable-title:hover {
@@ -155,216 +248,18 @@
     p {
       margin: 0.3rem 0;
     }
-
-    /* News box */
-    .news-box {
-      background: linear-gradient(135deg, #b47cffcc, #70f0d8cc);
-      padding: 18px 25px;
-      border-radius: 20px;
-      color: #0f2027;
-      font-weight: 700;
-      font-size: 1.3rem;
-      text-align: center;
-      box-shadow: 0 0 20px #b47cffaa;
-      margin-bottom: 40px;
-      user-select: none;
-    }
-
-    /* News preview above header */
-    .news-preview {
-      background: linear-gradient(135deg, #b47cffcc, #70f0d8cc);
-      color: #0f2027;
-      padding: 15px 25px;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      box-shadow: 0 0 20px #b47cffaa;
-      cursor: pointer;
-      user-select: none;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-      transition: background-color 0.3s ease;
-    }
-
-    .news-preview:hover {
-      background: linear-gradient(135deg, #70f0d8cc, #b47cffcc);
-      color: #203a43;
-      box-shadow: 0 0 25px #70f0d8ff;
-    }
-
-    /* Social links container */
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 15px;
-      user-select: none;
-    }
-
-    .social-link {
-      color: #70f0d8;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 15px;
-      border-radius: 25px;
-      background: #203a43cc;
-      box-shadow: 0 0 10px #70f0d8aa;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .social-link:hover {
-      background: #70f0d8cc;
-      color: #203a43;
-      box-shadow: 0 0 15px #b47cffcc;
-      text-decoration: none;
-    }
-
-    /* Simple SVG icon style */
-    .icon {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    /* Cooperation box */
-    .cooperation {
-      background: linear-gradient(135deg, #b47cffcc, #70f0d8cc);
-      padding: 15px 20px;
-      border-radius: 20px;
-      color: #0f2027;
-      font-weight: 700;
-      font-size: 1rem;
-      text-align: center;
-      box-shadow: 0 0 20px #b47cffaa;
-      margin-bottom: 40px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      user-select: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .cooperation img {
-      height: 40px;
-      filter: drop-shadow(0 0 5px #203a43);
-      user-select: none;
-    }
-
-    .cooperation-text {
-      color: #0f2027;
-      font-weight: 700;
-      font-size: 1.2rem;
-      text-shadow: 0 0 6px #70f0d8aa;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 480px) {
-      header img {
-        width: 100px;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      .social-links {
-        flex-direction: column;
-        gap: 12px;
-      }
-      .social-link {
-        justify-content: center;
-      }
-      .cooperation {
-        flex-direction: column;
-        gap: 12px;
-      }
-    }
   </style>
 </head>
 <body>
-
-  <!-- Nadpis první zprávy nad headerem -->
-  <div id="news-preview" class="news-preview clickable-title" onclick="toggleVisibility('news-full')">
-    Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu
-  </div>
-
   <header>
-    <img src="formule_neon.png" alt="Glow League Logo" />
-    <h1>Glow League Racing</h1>
-
-    <!-- Social links Instagram a YouTube -->
-    <div class="social-links">
-      <a href="https://www.instagram.com/glow_league_racing" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Glow League Racing">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5a3.75 3.75 0 0 0 3.75-3.75v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm8.75 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-4.75 2a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5Zm0 2a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 0 0 0-5.5Z"/></svg>
-        @glow_league_racing
-      </a>
-      <a href="https://www.youtube.com/@GlowLeagueRacing" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube Glow League Racing">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 15l5.19-3L10 9v6Zm11-6.44a3.25 3.25 0 0 0-2.29-2.3C17.47 6 12 6 12 6s-5.47 0-6.71.26a3.25 3.25 0 0 0-2.29 2.3A34.33 34.33 0 0 0 2 12a34.33 34.33 0 0 0 .94 3.44 3.25 3.25 0 0 0 2.3 2.3C6.53 18 12 18 12 18s5.47 0 6.71-.26a3.25 3.25 0 0 0 2.29-2.3A34.33 34.33 0 0 0 22 12a34.33 34.33 0 0 0-.94-3.44Z"/></svg>
-        @GlowLeagueRacing
-      </a>
-    </div>
-
-    <!-- Spolupráce -->
-    <div class="cooperation">
-      <img src="starprint_logo.png" alt="StarPrint Logo" />
-      <div class="cooperation-text">
-        Spolupráce se StarPrint — <a href="https://www.instagram.com/3dstarprint_sk" target="_blank" rel="noopener noreferrer" style="color:#203a43; font-weight:700; text-decoration: underline;">@3dstarprint_sk</a>
-      </div>
-    </div>
-
-    <p class="description">
-      Virtuální F1 esport liga založená v roce 2024. Soutěžíme v simulovaných Grand Prix závodech.
-    </p>
-
-    <a href="https://discord.gg/f9ucGtfc" target="_blank" rel="noopener noreferrer" class="button">Připoj se na Discord</a>
-  </header>
-
-  <main>
-    <!-- News sekce -->
-    <section>
-      <h2 class="clickable-title" onclick="toggleVisibility('news-full')">News</h2>
-      <div id="news-full" class="toggle-content">
-        <p><strong>Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu</strong></p>
-        <p>Tomáš Stašík bude obhajovat modré barvy a otazníky pořad zůstávají nad hlavními sedačkami. Tomáš Ševčík pořád neoznámil, že bude pokračovat, a zprávy o Kubičkovi nebyly nijak potvrzeny.</p>
-      </div>
-    </section>
-
-    <!-- Šampioni -->
-    <section>
-      <h2 class="clickable-title" onclick="toggleVisibility('champions')">Šampioni</h2>
-      <div id="champions" class="toggle-content">
-        <p><strong>Daniel Borko</strong> – 1.–3. sezóna (Mercedes, Red Bull)</p>
-        <p><strong>Ondřej Zahálka</strong> – 4. sezóna (Red Bull)</p>
-      </div>
-    </section>
-
-    <!-- Velké milníky -->
-    <section>
-      <h2 class="clickable-title" onclick="toggleVisibility('milestones')">VELKÉ MILNÍKY</h2>
-      <div id="milestones" class="toggle-content">
-        <p>Zde můžeš doplnit klíčové momenty ligy, významné závody nebo rekordy.</p>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    function toggleVisibility(id) {
-      const el = document.getElementById(id);
-      if (el.style.display === 'block') {
-        el.style.display = 'none';
-      } else {
-        el.style.display = 'block';
-      }
-    }
-  </script>
-</body>
-</html>
+    <div class="header-top">
+      <div class="social-links">
+        <a href="https://www.instagram.com/glow_league_racing" target="_blank" rel="noopener noreferrer" aria-label="Instagram Glow League Racing">
+          <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5a3.75 3.75 0 003.75-3.75v-8.5A3.75 3.75 0 0016.25 4h-8.5zm7.75 1.5a1 1 0 110 2 1 1 0 010-2zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/>
+          </svg>
+          @glow_league_racing
+        </a>
+        <a href="https://www.youtube.com/@GlowLeagueRacing" target="_blank" rel="noopener noreferrer" aria-label="YouTube Glow League Racing">
+          <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M10 15l5.19-3L10 9v6zm11-3c0-1.1-.9-2-2-2h-1.2l-1-1H6.2l-1 1H4c-1.1 0-2 .9-2
