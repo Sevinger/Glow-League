@@ -1,362 +1,216 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Glow League Racing</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
-
     body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0; padding: 0;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: #f0f0f0;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: white;
     }
+
     header {
-      background: #121d3a;
-      color: #eee;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 24px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      border-bottom: 2px solid #4f46e5;
     }
-    header .socials {
-      display: flex;
-      gap: 20px;
-      font-weight: 600;
-      font-size: 15px;
-      align-items: center;
+
+    .logo {
+      height: 60px;
     }
-    header .socials a {
-      color: #59c1ff;
-      text-decoration: none;
-      position: relative;
-      transition: color 0.3s ease;
+
+    .socials {
+      text-align: right;
     }
-    header .socials a::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -3px;
-      width: 100%; height: 2px;
-      background: #59c1ff;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
-    }
-    header .socials a:hover {
-      color: #a6e1ff;
-    }
-    header .socials a:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-    header .collab {
-      font-size: 14px;
-      color: #7da3c1;
-      font-style: italic;
-      margin-left: 30px;
+
+    .socials p {
+      margin: 0;
+      font-size: 0.9rem;
     }
 
     main {
-      max-width: 960px;
-      margin: 30px auto 60px;
-      padding: 0 20px;
-      background: rgba(255 255 255 / 0.05);
-      border-radius: 20px;
-      box-shadow:
-        0 0 15px rgb(15 103 255 / 0.3),
-        inset 0 0 30px rgb(15 103 255 / 0.2);
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      text-align: center;
-      text-shadow: 0 0 10px #0f67ffcc;
-      letter-spacing: 0.05em;
+    h1, h2, h3 {
+      color: #a5b4fc;
     }
 
-    #main-news-title {
-      font-size: 1.6rem;
-      background: linear-gradient(90deg, #0077ff, #00c6ff);
-      color: white;
-      padding: 12px 25px;
-      border-radius: 40px;
+    .highlight-news {
+      background: rgba(79, 70, 229, 0.7);
+      padding: 1rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
       text-align: center;
-      margin-bottom: 30px;
-      user-select: none;
-      font-weight: 700;
-      box-shadow: 0 0 15px #00a0ffcc;
-      letter-spacing: 0.04em;
+      font-size: 1.3rem;
     }
 
     section {
-      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
-    section h2 {
-      background: linear-gradient(90deg, #004aad, #0077ff);
-      color: white;
-      padding: 14px 22px;
-      margin: 0 0 20px 0;
-      border-radius: 35px;
+
+    .clickable-title {
+      font-weight: bold;
       cursor: pointer;
-      user-select: none;
-      font-weight: 700;
-      font-size: 1.4rem;
-      box-shadow: 0 6px 12px #005fccaa;
-      transition: background 0.3s ease;
-    }
-    section h2:hover {
-      background: linear-gradient(90deg, #0064ff, #00aaff);
-      box-shadow: 0 8px 18px #007fffcc;
+      margin-top: 1rem;
+      background: #3b82f6;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      display: inline-block;
     }
 
     .toggle-content {
       display: none;
-      padding-left: 20px;
-      animation: fadeIn 0.4s ease forwards;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-8px);}
-      to {opacity: 1; transform: translateY(0);}
+      margin-top: 0.5rem;
     }
 
-    .clickable-title {
-      background: #004aad88;
-      margin: 8px 0;
-      padding: 12px 18px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      user-select: none;
-      color: #b3d4ff;
-      box-shadow: 0 2px 6px #004aadbb;
-      transition: background 0.3s ease;
-    }
-    .clickable-title:hover {
-      background: #0064ffcc;
-      color: white;
-      box-shadow: 0 4px 10px #007fffdd;
-    }
-
-    /* Tables */
     table {
-      border-collapse: collapse;
       width: 100%;
-      background: rgba(255 255 255 / 0.07);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow:
-        0 0 10px rgb(0 119 255 / 0.3);
-    }
-    th, td {
-      padding: 12px 18px;
-      border-bottom: 1px solid #005fcccc;
-      text-align: left;
-      font-size: 15px;
-      color: #d0e6ff;
-      user-select: text;
-    }
-    th {
-      background: linear-gradient(90deg, #0064ff, #008cff);
-      color: white;
-      border-bottom: 3px solid #00aaff;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      text-shadow: 0 0 3px #0077ffaa;
-    }
-    tr:hover {
-      background-color: #007fff33;
+      border-collapse: collapse;
+      margin-top: 1rem;
     }
 
-    /* News paragraphs */
-    .news-article {
-      margin-bottom: 22px;
-      line-height: 1.5;
-      font-size: 16px;
-      color: #d0e6ffdd;
-      user-select: text;
-      text-shadow: 0 0 6px #007fff88;
+    th, td {
+      padding: 0.5rem;
+      text-align: left;
+      border-bottom: 1px solid #555;
+    }
+
+    th {
+      background-color: #1f2937;
+    }
+
+    .top3-preview {
+      display: flex;
+      gap: 2rem;
+      justify-content: space-around;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .top3-preview div {
+      background: #6d28d9;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      flex: 1;
     }
   </style>
 </head>
 <body>
+  <header>
+    <img src="logo.png" alt="Glow League Racing logo" class="logo">
+    <div class="socials">
+      <p>IG: @glow_league_racing</p>
+      <p>YT: @GlowLeagueRacing</p>
+      <p>Spolupráce: @3dstarprint_sk</p>
+    </div>
+  </header>
+  <main>
+    <div class="highlight-news">
+      📰 Williams zveřejnil jméno rezervního jezdce pro 5. sezónu: Tomáš Stašík!
+    </div>
 
-<header>
-  <div class="socials">
-    <a href="https://instagram.com/glow_league_racing" target="_blank" rel="noopener noreferrer" title="Glow League Racing Instagram">IG @glow_league_racing</a>
-    <a href="https://youtube.com/@GlowLeagueRacing" target="_blank" rel="noopener noreferrer" title="Glow League Racing YouTube">YT @GlowLeagueRacing</a>
-  </div>
-  <div class="collab" title="Spolupráce">
-    Spolupráce s IG <a href="https://instagram.com/3dstarprint_sk" target="_blank" rel="noopener noreferrer" style="color:#59c1ff; text-decoration:none;">@3dstarprint_sk</a>
-  </div>
-</header>
-
-<main>
-  <h1>Glow League Racing</h1>
-
-  <!-- Hlavní zpráva viditelná nad názvem webu -->
-  <div id="main-news-title">Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu</div>
-
-  <!-- 1. News -->
-  <section>
-    <h2 onclick="toggleVisibility('news')">News</h2>
-    <div id="news" class="toggle-content">
-      <div class="news-article">
-        <strong>Tomáš Stašík</strong><br />
-        Bude obhajovat modré barvy a otazníky pořad zůstávají nad hlavními sedadly. Tomáš Ševčík pořád neoznámil, že bude pokračovat a zprávy o Kubičkovi nebyly nijak potvrzeny.
+    <div class="top3-preview">
+      <div>
+        <h3>🥇 Abu Dhabi</h3>
+        <p>1. Borko</p>
+        <p>2. Ondřejka</p>
+        <p>3. Kubel</p>
+      </div>
+      <div>
+        <h3>🥇 Las Vegas</h3>
+        <p>1. Zahálka</p>
+        <p>2. Kubel</p>
+        <p>3. Svat</p>
+      </div>
+      <div>
+        <h3>🥇 Portugalsko</h3>
+        <p>1. Svat</p>
+        <p>2. Zahálka</p>
+        <p>3. Borko</p>
       </div>
     </div>
-  </section>
 
-  <!-- 2. Šampioni -->
-  <section>
-    <h2 onclick="toggleVisibility('champions')">Šampioni</h2>
-    <div id="champions" class="toggle-content">
-      <p><strong>Daniel Borko</strong> 1-3 Sezona (Mercedes, RedBull)</p>
-      <p><strong>Ondřej Zahálka</strong> 4. sezona (RB)</p>
-      <h3></h3>
-    </div>
-  </section>
-
-  <!-- 3. Kalendář závodů a výsledky -->
-  <section>
-    <h2 onclick="toggleVisibility('races')">Kalendář závodů a výsledky</h2>
-    <div id="races" class="toggle-content">
-      <div class="clickable-title" onclick="toggleVisibility('race1')">Singapur</div>
-      <div id="race1" class="toggle-content">
-        <p>🥇 Náhlovský</p>
-        <p>🥈 Svat</p>
-        <p>🥉 Loudil</p>
+    <section>
+      <h2 onclick="toggleVisibility('news')">Novinky</h2>
+      <div id="news" class="toggle-content">
+        <h3>Tomáš Stašík bude obhajovat modré barvy</h3>
+        <p>Otazníky zůstávají nad hlavními sedačkami. Tomáš Ševčík stále neoznámil, že bude pokračovat, a zprávy o Kubičkovi nebyly potvrzeny.</p>
       </div>
+    </section>
 
-      <div class="clickable-title" onclick="toggleVisibility('race2')">Itálie (Imola)</div>
-      <div id="race2" class="toggle-content">
-        <p>🥇 Zahálka</p>
-        <p>🥈 Loudil</p>
-        <p>🥉 Nik</p>
+    <section>
+      <h2 onclick="toggleVisibility('champions')">Šampioni</h2>
+      <div id="champions" class="toggle-content">
+        <ul>
+          <li>Daniel Borko – sezóny 1–3 (Mercedes, Red Bull)</li>
+          <li>Ondřej Zahálka – sezóna 4 (RB)</li>
+        </ul>
       </div>
+    </section>
 
-      <div class="clickable-title" onclick="toggleVisibility('race3')">Belgie</div>
-      <div id="race3" class="toggle-content">
-        <p>🥇 Zahálka</p>
-        <p>🥈 Svat</p>
-        <p>🥉 Náhlovský</p>
+    <section>
+      <h2 onclick="toggleVisibility('standings')">Statistiky jezdců</h2>
+      <div id="standings" class="toggle-content">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Jezdec</th>
+              <th>Tým</th>
+              <th>Body</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1.</td><td>Zahálka</td><td>RB</td><td>211</td></tr>
+            <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
+            <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
+            <tr><td>4.</td><td>Borko</td><td>RB</td><td>122</td></tr>
+            <tr><td>5.</td><td>Neubauer</td><td>Red Bull</td><td>89</td></tr>
+            <tr><td>6.</td><td>Drozd</td><td>Alpine</td><td>69</td></tr>
+            <tr><td>7.</td><td>Vaňko</td><td>Mercedes</td><td>68</td></tr>
+            <tr><td>8.</td><td>Korkobec</td><td>Aston Martin</td><td>62</td></tr>
+            <tr><td>9.</td><td>Náhlovský</td><td>Mercedes</td><td>60</td></tr>
+            <tr><td>10.</td><td>Beran</td><td>Red Bull</td><td>57</td></tr>
+            <tr><td>11.</td><td>Košek</td><td>McLaren</td><td>57</td></tr>
+            <tr><td>12.</td><td>Čermák</td><td>Alpine</td><td>53</td></tr>
+            <tr><td>13.</td><td>Nic</td><td>Aston Martin</td><td>52</td></tr>
+            <tr><td>14.</td><td>Valášek</td><td>Ferrari</td><td>47</td></tr>
+            <tr><td>15.</td><td>Jirčík</td><td>Haas</td><td>42</td></tr>
+            <tr><td>16.</td><td>Jarschel</td><td>Sauber</td><td>36</td></tr>
+            <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
+            <tr><td>18.</td><td>Ondrejka</td><td>Rezerva</td><td>33</td></tr>
+            <tr><td>19.</td><td>Kubel</td><td>Rezerva</td><td>25</td></tr>
+            <tr><td>20.</td><td>Stašík</td><td>Williams</td><td>25</td></tr>
+          </tbody>
+        </table>
       </div>
+    </section>
 
-      <div class="clickable-title" onclick="toggleVisibility('race4')">Baku</div>
-      <div id="race4" class="toggle-content">
-        <p>🥇 Zahálka</p>
-        <p>🥈 Loudil</p>
-        <p>🥉 Borko</p>
-      </div>
-
-      <div class="clickable-title" onclick="toggleVisibility('race5')">Japonsko</div>
-      <div id="race5" class="toggle-content">
-        <p>🥇 Korkobec</p>
-        <p>🥈 Drost</p>
-        <p>🥉 Turek</p>
-      </div>
-
-      <div class="clickable-title" onclick="toggleVisibility('race6')">Maďarsko</div>
-      <div id="race6" class="toggle-content">
-        <p>🥇 Svat</p>
-        <p>🥈 Borko</p>
-        <p>🥉 Zahálka</p>
-      </div>
-
-      <div class="clickable-title" onclick="toggleVisibility('race7')">Británie</div>
-      <div id="race7" class="toggle-content">
-        <p>🥇 Loudil</p>
-        <p>🥈 Zahálka</p>
-        <p>🥉 Neubauer</p>
-      </div>
-
-      <div class="clickable-title" onclick="toggleVisibility('race8')">Portugalsko</div>
-      <div id="race8" class="toggle-content">
-        <p>🥇 Svat</p>
-        <p>🥈 Zahálka</p>
-        <p>🥉 Borko</p>
-      </div>
-
-      <div class="clickable-title" onclick="toggleVisibility('race9')">Las Vegas</div>
-      <div id="race9" class="toggle-content">
-        <p>🥇 Zahálka</p>
-        <p>🥈 Kubel</p>
-        <p>🥉 Svat</p>
-      </div>
-
-      <div class
-      <div class="clickable-title" onclick="toggleVisibility('race10')">Abu Dhabi</div>
-      <div id="race10" class="toggle-content">
-        <p>🥇 Borko</p>
-        <p>🥈 Ondřejka</p>
-        <p>🥉 Kubel</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Statistiky jezdců -->
-  <section>
-    <h2 onclick="toggleVisibility('standings')">Statistiky jezdců</h2>
-    <div id="standings" class="toggle-content">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Jezdec</th>
-            <th>Tým</th>
-            <th>Body</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>1.</td><td>Zahálka</td><td>RB</td><td>211</td></tr>
-          <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
-          <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
-          <tr><td>4.</td><td>Borko</td><td>RB</td><td>122</td></tr>
-          <tr><td>5.</td><td>Neubauer</td><td>Red Bull</td><td>89</td></tr>
-          <tr><td>6.</td><td>Drozd</td><td>Alpine</td><td>69</td></tr>
-          <tr><td>7.</td><td>Vaňko</td><td>Mercedes</td><td>68</td></tr>
-          <tr><td>8.</td><td>Korkobec</td><td>Aston Martin</td><td>62</td></tr>
-          <tr><td>9.</td><td>Náhlovský</td><td>Mercedes</td><td>60</td></tr>
-          <tr><td>10.</td><td>Beran</td><td>Red Bull</td><td>57</td></tr>
-          <tr><td>11.</td><td>Košek</td><td>McLaren</td><td>57</td></tr>
-          <tr><td>12.</td><td>Čermák</td><td>Alpine</td><td>53</td></tr>
-          <tr><td>13.</td><td>Nic</td><td>Aston Martin</td><td>52</td></tr>
-          <tr><td>14.</td><td>Valášek</td><td>Ferrari</td><td>47</td></tr>
-          <tr><td>15.</td><td>Jirčík</td><td>Haas</td><td>42</td></tr>
-          <tr><td>16.</td><td>Jarschel</td><td>Sauber</td><td>36</td></tr>
-          <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
-          <tr><td>18.</td><td>Ondrejka</td><td>Rezerva</td><td>33</td></tr>
-          <tr><td>19.</td><td>Kubel</td><td>Rezerva</td><td>25</td></tr>
-          <tr><td>20.</td><td>Stašík</td><td>Williams</td><td>25</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-</main>
-
-<script>
-  function toggleVisibility(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    if (el.style.display === 'block') {
-      el.style.display = 'none';
-    } else {
-      el.style.display = 'block';
-    }
-  }
-</script>
-
+    <script>
+      function toggleVisibility(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+      }
+    </script>
+  </main>
 </body>
 </html>
 
