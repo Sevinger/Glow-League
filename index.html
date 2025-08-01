@@ -5,198 +5,223 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Glow League Racing</title>
   <style>
-    /* Reset a základní styl */
-    * {
-      box-sizing: border-box;
-    }
     body {
       margin: 0;
+      background: linear-gradient(135deg, #4ac6d0, #7b4cd1);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #7e57c2, #00bcd4);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      color: #e0e0e0;
     }
     header {
-      background-color: rgba(0, 0, 0, 0.6);
-      width: 100%;
-      padding: 2rem 1rem;
       text-align: center;
-      border-bottom: 3px solid #00bcd4;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      padding: 40px 20px 20px;
+      background: rgba(0,0,0,0.5);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
     header img {
       width: 120px;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 0 8px #00bcd4);
+      margin-bottom: 15px;
+      filter: drop-shadow(0 0 10px #4ac6d0);
     }
-    h1 {
-      margin: 0;
+    header h1 {
       font-size: 3rem;
-      font-weight: 900;
-      text-shadow: 0 0 12px #00bcd4;
+      margin: 0;
+      color: #fff;
+      text-shadow: 0 0 10px #7b4cd1;
     }
-    p.subtitle {
-      margin-top: 0.5rem;
-      font-size: 1.25rem;
-      color: #d1c4e9;
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #c7f0f7;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-weight: bold;
+      text-decoration: none;
+      background: #7b4cd1;
+      color: #e0e0e0;
+      border-radius: 30px;
+      box-shadow: 0 0 10px #7b4cd1;
+      transition: background 0.3s ease;
+    }
+    a.button:hover {
+      background: #4ac6d0;
+      box-shadow: 0 0 15px #4ac6d0;
     }
     main {
       max-width: 900px;
-      width: 90%;
-      padding: 2rem 1rem;
-      flex-grow: 1;
+      margin: 40px auto;
+      padding: 0 20px;
     }
     section {
-      margin-bottom: 3rem;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.3);
       border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      padding: 25px 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
     }
-    h2 {
-      display: flex;
-      align-items: center;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #7e57c2;
-      padding-bottom: 0.3rem;
+    section h2 {
+      border-bottom: 2px solid #7b4cd1;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      color: #b3d9ff;
     }
-    /* Ikony jako emoji, můžeš nahradit SVG/ikonami */
-    h2::before {
-      content: '🏎️';
-      margin-right: 0.5rem;
-      font-size: 1.8rem;
+    .race-card, .stat-row {
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-bottom: 10px;
+      box-shadow: 0 0 5px rgba(123, 76, 209, 0.7);
     }
-    ul, table {
-      width: 100%;
-      border-collapse: collapse;
+    .race-card h3 {
+      margin: 0 0 8px;
+      color: #d1e8ff;
+    }
+    .race-card p {
+      margin: 2px 0;
     }
     table {
-      color: white;
+      width: 100%;
+      border-collapse: collapse;
+      color: #d3e6ff;
     }
-    th, td {
-      padding: 0.6rem 1rem;
-      border-bottom: 1px solid #555;
+    table th, table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #7b4cd1;
       text-align: left;
     }
-    tr:hover {
-      background-color: rgba(0, 188, 212, 0.2);
+    table th {
+      background: rgba(123, 76, 209, 0.4);
     }
-    /* Tlačítko */
-    .btn {
-      display: inline-block;
-      background-color: #7e57c2;
-      color: white;
-      padding: 0.75rem 2rem;
-      font-weight: 700;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(126, 87, 194, 0.7);
-      transition: background-color 0.3s ease;
-      margin-top: 1rem;
-      cursor: pointer;
-      text-align: center;
-    }
-    .btn:hover {
-      background-color: #00bcd4;
-      box-shadow: 0 6px 14px rgba(0, 188, 212, 0.8);
-    }
-    /* Obrázky formulí v galerii */
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-    .gallery img {
-      width: 180px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,188,212,0.8);
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      color: #c7e0ff;
     }
     footer {
-      background: rgba(0,0,0,0.7);
-      padding: 1rem;
-      width: 100%;
       text-align: center;
-      color: #bbb;
+      padding: 20px 10px;
       font-size: 0.9rem;
-      box-shadow: inset 0 1px 2px rgba(255,255,255,0.1);
-    }
-    a {
-      color: #00bcd4;
+      color: #a0b9d6;
+      background: rgba(0,0,0,0.3);
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
+  <header>
+    <img src="formule_neon.png" alt="Glow League Logo" />
+    <h1>Glow League Racing</h1>
+    <p>Virtuální F1 esport liga založená v roce 2024. Soutěžíme v simulovaných Grand Prix závodech.</p>
+    <a href="https://discord.gg/f9ucGtfc" target="_blank" class="button">Připoj se na Discord</a>
+  </header>
 
-<header>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Formula_1_logo.svg/120px-Formula_1_logo.svg.png" alt="Glow League Logo" />
-  <h1>Glow League Racing</h1>
-  <p class="subtitle">Virtuální F1 esport liga založená v roce 2024. Soutěžíme v simulovaných Grand Prix závodech.</p>
-  <a href="https://discord.gg/f9ucGtfc" target="_blank" class="btn">Připoj se na Discord</a>
-</header>
+  <main>
+    <section>
+      <h2>Kalendář závodů</h2>
+      <p>Brzy doplníme oficiální termíny závodů pro následující sezónu.</p>
+    </section>
 
-<main>
-  <section>
-    <h2>Kalendář závodů</h2>
-    <p>Brzy doplníme oficiální termíny závodů pro následující sezónu.</p>
-  </section>
+    <section>
+      <h2>Výsledky posledních závodů</h2>
+      <div>
+        <div class="race-card">
+          <h3>Singapur</h3>
+          <p>🥇 Náhlovský</p>
+          <p>🥈 Svat</p>
+          <p>🥉 Loudil</p>
+        </div>
+        <div class="race-card">
+          <h3>Itálie (Imola)</h3>
+          <p>🥇 Zahálka</p>
+          <p>🥈 Loudil</p>
+          <p>🥉 Nik</p>
+        </div>
+        <div class="race-card">
+          <h3>Belgie</h3>
+          <p>🥇 Zahálka</p>
+          <p>🥈 Svat</p>
+          <p>🥉 Náhlovský</p>
+        </div>
+        <div class="race-card">
+          <h3>Baku</h3>
+          <p>🥇 Zahálka</p>
+          <p>🥈 Loudil</p>
+          <p>🥉 Borko</p>
+        </div>
+        <div class="race-card">
+          <h3>Japonsko</h3>
+          <p>🥇 Korkobec</p>
+          <p>🥈 Drost</p>
+          <p>🥉 Turek</p>
+        </div>
+        <div class="race-card">
+          <h3>Maďarsko</h3>
+          <p>🥇 Svat</p>
+          <p>🥈 Borko</p>
+          <p>🥉 Zahálka</p>
+        </div>
+        <div class="race-card">
+          <h3>Británie</h3>
+          <p>🥇 Loudil</p>
+          <p>🥈 Zahálka</p>
+          <p>🥉 Neubauer</p>
+        </div>
+        <div class="race-card">
+          <h3>Portugalsko</h3>
+          <p>🥇 Svat</p>
+          <p>🥈 Zahálka</p>
+          <p>🥉 Borko</p>
+        </div>
+        <div class="race-card">
+          <h3>Las Vegas</h3>
+          <p>🥇 Zahálka</p>
+          <p>🥈 Kubel</p>
+          <p>🥉 Svat</p>
+        </div>
+        <div class="race-card">
+          <h3>Abu Dhabi</h3>
+          <p>🥇 Borko</p>
+          <p>🥈 Ondřejka</p>
+          <p>🥉 Kubel</p>
+        </div>
+      </div>
+    </section>
 
-  <section>
-    <h2>Výsledky posledních závodů</h2>
-    <ul>
-      <li>🏁 Singapur – 1. Náhlovský, 2. Svat, 3. Loudil</li>
-      <li>🏁 Itálie (Imola) – 1. Zahálka, 2. Loudil, 3. Nik</li>
-      <li>🏁 Belgie – 1. Zahálka, 2. Svat, 3. Náhlovský</li>
-      <!-- Můžeš pokračovat -->
-    </ul>
-  </section>
+    <section>
+      <h2>Statistiky jezdců</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jezdec</th>
+            <th>Tým</th>
+            <th>Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1.</td><td>Zahálka</td><td>Red Bull</td><td>211</td></tr>
+          <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
+          <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
+          <tr><td>4.</td><td>Borko</td><td>Red Bull</td><td>122</td></tr>
+          <tr><td>5.</td><td>Neubauer</td><td>Red Bull</td><td>89</td></tr>
+          <tr><td>6.</td><td>Drozd</td><td>Alpine</td><td>69</td></tr>
+          <tr><td>7.</td><td>Vaňko</td><td>Mercedes</td><td>68</td></tr>
+          <tr><td>8.</td><td>Korkobec</td><td>Aston Martin</td><td>62</td></tr>
+          <tr><td>9.</td><td>Náhlovský</td><td>Mercedes</td><td>60</td></tr>
+          <tr><td>10.</td><td>Beran</td><td>Red Bull</td><td>57</td></tr>
+          <tr><td>11.</td><td>Košek</td><td>McLaren</td><td>57</td></tr>
+          <tr><td>12.</td><td>Čermák</td><td>Alpine</td><td>53</td></tr>
+          <tr><td>13.</td><td>Nic</td><td>Aston Martin</td><td>52</td></tr>
+          <tr><td>14.</td><td>Valášek</td><td>Ferrari</td><td>47</td></tr>
+          <tr><td>15.</td><td>Jirčík</td><td>Haas</td><td>42</td></tr>
+          <tr><td>16.</td><td>Jarschel</td><td>Stake F1</td><td>36</td></tr>
+          <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
+          <tr><td>18.</td><td>Ondrejka</td><td>RD</td><td>33</td></tr>
+          <tr><td>19.</td><td>Kubel</td><td>RD</td><td>25</td></tr>
+          <tr><td>20.</td><td>Staší
 
-  <section>
-    <h2>Statistiky jezdců</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>#</th><th>Jezdec</th><th>Tým</th><th>Body</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>1.</td><td>Zahálka</td><td>Red Bull</td><td>211</td></tr>
-        <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
-        <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
-        <!-- Další řádky -->
-      </tbody>
-    </table>
-  </section>
-
-  <section>
-    <h2>Galerie formulí</h2>
-    <div class="gallery">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/F1_Monaco_GP_2018_Race.jpg/320px-F1_Monaco_GP_2018_Race.jpg" alt="Formula 1 race" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Ferrari_SF21_2021_F1_car.jpg/320px-Ferrari_SF21_2021_F1_car.jpg" alt="Ferrari F1" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Mercedes_W11_2020_Silver_Arrows.jpg/320px-Mercedes_W11_2020_Silver_Arrows.jpg" alt="Mercedes F1" />
-    </div>
-  </section>
-
-  <section>
-    <h2>Kontakt / Přihlášky</h2>
-    <p>Připoj se k naší komunitě na Discordu a staň se součástí Glow League Racing.</p>
-    <a href="https://discord.gg/f9ucGtfc" target="_blank" class="btn">Discord server</a>
-  </section>
-</main>
-
-<footer>
-  &copy; 2025 Glow League Racing. Všechna práva vyhrazena.
-</footer>
-
-</body>
-</html>
