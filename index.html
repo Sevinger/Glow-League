@@ -12,6 +12,13 @@
       background: linear-gradient(to right, #1f1c2c, #928dab);
       color: white;
     }
+    .glow-title {
+      text-align: center;
+      font-size: 2em;
+      color: #fff;
+      padding: 15px;
+      text-shadow: 0 0 10px #6e4aff, 0 0 20px #6e4aff, 0 0 30px #6e4aff;
+    }
     header {
       background-color: rgba(0, 0, 0, 0.6);
       padding: 20px;
@@ -36,21 +43,6 @@
     .starprint-logo {
       height: 40px;
     }
-    .announcement {
-      width: 100%;
-      text-align: center;
-      background: linear-gradient(90deg, #7b00ff, #00c6ff);
-      color: white;
-      font-size: 1.5em;
-      font-weight: bold;
-      padding: 10px 0;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 0.7; }
-      100% { opacity: 1; }
-    }
     main {
       padding: 20px;
     }
@@ -64,6 +56,11 @@
       border-radius: 15px;
       padding: 15px;
       margin: 15px 0;
+    }
+    .highlight-news {
+      background: rgba(255, 0, 128, 0.2);
+      border: 2px solid hotpink;
+      box-shadow: 0 0 10px hotpink;
     }
     .toggle-content {
       display: none;
@@ -88,10 +85,17 @@
       border-radius: 10px;
       margin-top: 10px;
     }
+    .bg-image {
+      width: 100%;
+      border-radius: 20px;
+      margin: 20px 0;
+      opacity: 0.85;
+    }
   </style>
 </head>
 <body>
-  <div class="announcement">Glow League Racing S5 – Coming Soon!</div>
+  <div class="glow-title">Glow League Racing S5 – Coming Soon!</div>
+
   <header>
     <img src="logo.png" alt="Glow League Logo" class="logo">
     <div class="socials">
@@ -103,8 +107,10 @@
   </header>
 
   <main>
-    <section class="highlight-box">
-      <h2>📲 Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu</h2>
+    <img src="track.jpg" alt="Závodní trať" class="bg-image">
+
+    <section class="highlight-box highlight-news">
+      <h2>🗞️ Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu</h2>
       <p><strong>Tomáš Stašík</strong> bude obhajovat modré barvy a otazníky pořád zůstávají nad hlavními sedačkami. Tomáš Ševčík pořád neoznámil, že bude pokračovat a zprávy o Kubičkovi nebyly nijak potvrzeny.</p>
     </section>
 
@@ -114,6 +120,8 @@
         <p>(Sem můžeš později přidat další novinky)</p>
       </div>
     </section>
+
+    <img src="cars.jpg" alt="Závodní vozy" class="bg-image">
 
     <section>
       <h2>🏆 Šampioni</h2>
@@ -171,4 +179,3 @@
   </script>
 </body>
 </html>
-
