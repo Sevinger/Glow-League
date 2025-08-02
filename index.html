@@ -352,6 +352,48 @@
       font-size: 0.875rem;
     }
 
+    /* A-Team List */
+    .ateam-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .ateam-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: var(--border-radius);
+      border-left: 3px solid var(--accent-tertiary);
+      transition: all 0.3s ease;
+    }
+
+    .ateam-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-left-color: var(--accent-primary);
+    }
+
+    .ateam-name {
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .ateam-name:hover {
+      color: var(--accent-secondary);
+      text-decoration: underline;
+    }
+
+    .ateam-role {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      text-align: right;
+    }
+
     /* Modal Styles */
     .modal {
       display: none;
@@ -636,6 +678,58 @@
             </div>
           </div>
 
+          <button class="btn" onclick="toggleVisibility('ateam')">
+            👥 A-Team
+          </button>
+          <div id="ateam" class="toggle-content">
+            <div class="card">
+              <h3 class="section-heading">🏢 Management</h3>
+              <div class="ateam-list">
+                <div class="ateam-item">
+                  <a href="#" onclick="showATeamProfile('Jakub Daňo')" class="ateam-name">Jakub Daňo</a>
+                  <span class="ateam-role">Majitel</span>
+                </div>
+                <div class="ateam-item">
+                  <a href="#" onclick="showATeamProfile('Matyáš Holeček')" class="ateam-name">Matyáš Holeček</a>
+                  <span class="ateam-role">Spolumajitel</span>
+                </div>
+              </div>
+              
+              <h3 class="section-heading">⚙️ Admin Team</h3>
+              <div class="ateam-list">
+                <div class="ateam-item">
+                  <a href="#" onclick="showATeamProfile('Jakub Mahr')" class="ateam-name">Jakub Mahr</a>
+                  <span class="ateam-role">Ikona ligy</span>
+                </div>
+                <div class="ateam-item">
+                  <a href="#" onclick="showATeamProfile('Ondřej Zahálka')" class="ateam-name">Ondřej Zahálka</a>
+                  <span class="ateam-role">Admin</span>
+                </div>
+                <div class="ateam-item">
+                  <a href="#" onclick="showATeamProfile('Adam Suský')" class="ateam-name">Adam Suský</a>
+                  <span class="ateam-role">Admin</span>
+                </div>
+                <div class="ateam-item">
+                  <a href="#" onclick="showATeamProfile('Tobiáš Kubička')" class="ateam-name">Tobiáš Kubička</a>
+                  <span class="ateam-role">Admin</span>
+                </div>
+                <div class="ateam-item">
+                  <a href="#" onclick="showATeamProfile('Tomáš David Ševčík')" class="ateam-name">Tomáš David Ševčík</a>
+                  <span class="ateam-role">Admin</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="ateamProfileModal" class="modal">
+            <div class="modal-content">
+              <span class="close-button" onclick="closeATeamProfile()">&times;</span>
+              <h2 id="ateamName"></h2>
+              <p><strong>Role:</strong> <span id="ateamRole"></span></p>
+              <p id="ateamBio"></p>
+            </div>
+          </div>
+
           <div class="image-section">
             <img src="win3.jpg" alt="Top 3 vítězové">
           </div>
@@ -651,8 +745,8 @@
         <button class="btn" onclick="toggleVisibility('highlights')">
           ▶️ Highlights
         </button>
-        <div id="highlights" class="video-section toggle-content">
-          <video controls autoplay muted loop playsinline width="100%" height="auto" style="border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg);">
+        <div id="highlights" class="toggle-content">
+          <video width="100%" controls>
             <source src="https://8000-i2rsk1ujj089vmceoybg9-1aabeace.manusvm.computer/v24044gl0000cvhpun7og65nt5e6cong.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -683,6 +777,7 @@
   </div>
 
   <script src="driver_data.js"></script>
+  <script src="ateam_data.js"></script>
   <script>
     function toggleVisibility(id) {
       const el = document.getElementById(id);
@@ -712,10 +807,28 @@
         driverTeamEl.textContent = data.team;
         driverPointsEl.textContent = data.points;
         driverTenureEl.textContent = data.tenure;
-        driverBioEl.textContent = data.bio;
+        driverBioEl.textContent = data.bio || '';
         modal.style.display = 'block';
       } else {
         console.error('Driver data not found for:', driver);
+      }
+    }
+
+    function showATeamProfile(member) {
+      const modal = document.getElementById('ateamProfileModal');
+      const ateamNameEl = document.getElementById('ateamName');
+      const ateamRoleEl = document.getElementById('ateamRole');
+      const ateamBioEl = document.getElementById('ateamBio');
+
+      const data = aTeamData[member];
+
+      if (data) {
+        ateamNameEl.textContent = member;
+        ateamRoleEl.textContent = data.role;
+        ateamBioEl.textContent = data.bio || '';
+        modal.style.display = 'block';
+      } else {
+        console.error('A-Team member data not found for:', member);
       }
     }
 
@@ -724,11 +837,22 @@
       modal.style.display = 'none';
     }
 
+    function closeATeamProfile() {
+      const modal = document.getElementById('ateamProfileModal');
+      modal.style.display = 'none';
+    }
+
     // Close modal when clicking outside of it
     window.onclick = function(event) {
-      const modal = document.getElementById('driverProfileModal');
-      if (event.target == modal) {
-        modal.style.display = 'none';
+      const driverModal = document.getElementById('driverProfileModal');
+      const ateamModal = document.getElementById('ateamProfileModal');
+      
+      if (event.target == driverModal) {
+        driverModal.style.display = 'none';
+      }
+      
+      if (event.target == ateamModal) {
+        ateamModal.style.display = 'none';
       }
     }
 
