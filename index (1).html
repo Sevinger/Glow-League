@@ -571,9 +571,17 @@
           <img src="track.jpg" alt="Závodní trať">
         </div>
         
-        <div class="collab-banner">
-          🤝 Glow League spolupracuje s <strong>StarPrint</strong>
+        <button class="btn" onclick="toggleVisibility('highlights')">
+          ▶️ Highlights
+        </button>
+        <div id="highlights" class="video-section toggle-content">
+          <video controls autoplay muted loop playsinline width="100%" height="auto" style="border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg);">
+            <source src="https://8000-i2rsk1ujj089vmceoybg9-1aabeace.manusvm.computer/v24044gl0000cvhpun7og65nt5e6cong.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
+        
+
 
         <button class="btn" onclick="toggleVisibility('calendar-img')">
           📅 Kalendář
