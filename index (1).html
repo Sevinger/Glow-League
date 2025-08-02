@@ -267,6 +267,18 @@
       font-size: 0.875rem;
     }
 
+    td a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    td a:hover {
+      color: var(--accent-secondary);
+      text-decoration: underline;
+    }
+
     tr:hover {
       background: rgba(255, 255, 255, 0.03);
     }
@@ -290,18 +302,6 @@
 
     .image-section img:hover {
       transform: scale(1.02);
-    }
-
-    /* Collaboration Banner */
-    .collab-banner {
-      background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-primary));
-      color: white;
-      text-align: center;
-      padding: var(--spacing-lg);
-      border-radius: var(--border-radius-lg);
-      font-weight: 600;
-      margin: var(--spacing-xl) 0;
-      box-shadow: var(--shadow-md);
     }
 
     /* Section Headings */
@@ -350,6 +350,72 @@
     .champion-details {
       color: var(--text-secondary);
       font-size: 0.875rem;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+      backdrop-filter: blur(5px);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: var(--secondary-bg);
+      margin: 5% auto;
+      padding: var(--spacing-2xl);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-lg);
+      width: 80%;
+      max-width: 700px;
+      position: relative;
+      box-shadow: var(--shadow-xl);
+      animation: fadeInModal 0.5s;
+    }
+
+    @keyframes fadeInModal {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .close-button {
+      color: var(--text-secondary);
+      position: absolute;
+      top: var(--spacing-md);
+      right: var(--spacing-md);
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+      color: var(--accent-primary);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .modal-content h2 {
+      color: var(--accent-primary);
+      margin-bottom: var(--spacing-md);
+      font-size: 2rem;
+    }
+
+    .modal-content p {
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-secondary);
+    }
+
+    .modal-content strong {
+      color: var(--text-primary);
     }
 
     /* Responsive Design */
@@ -534,28 +600,39 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>1.</td><td>Zahálka</td><td>RB</td><td>211</td></tr>
-                  <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
-                  <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
-                  <tr><td>4.</td><td>Borko</td><td>RB</td><td>122</td></tr>
-                  <tr><td>5.</td><td>Neubauer</td><td>Red Bull</td><td>89</td></tr>
-                  <tr><td>6.</td><td>Drozd</td><td>Alpine</td><td>69</td></tr>
-                  <tr><td>7.</td><td>Vaňko</td><td>Mercedes</td><td>68</td></tr>
-                  <tr><td>8.</td><td>Korkobec</td><td>Aston Martin</td><td>62</td></tr>
-                  <tr><td>9.</td><td>Náhlovský</td><td>Mercedes</td><td>60</td></tr>
-                  <tr><td>10.</td><td>Beran</td><td>Red Bull</td><td>57</td></tr>
-                  <tr><td>11.</td><td>Košek</td><td>McLaren</td><td>57</td></tr>
-                  <tr><td>12.</td><td>Čermák</td><td>Alpine</td><td>53</td></tr>
-                  <tr><td>13.</td><td>Nic</td><td>Aston Martin</td><td>52</td></tr>
-                  <tr><td>14.</td><td>Valášek</td><td>Ferrari</td><td>47</td></tr>
-                  <tr><td>15.</td><td>Jirčík</td><td>Haas</td><td>42</td></tr>
-                  <tr><td>16.</td><td>Jarschel</td><td>Sauber</td><td>36</td></tr>
-                  <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
-                  <tr><td>18.</td><td>Ondrejka</td><td>Rezerva</td><td>33</td></tr>
-                  <tr><td>19.</td><td>Kubel</td><td>Rezerva</td><td>25</td></tr>
-                  <tr><td>20.</td><td>Stašík</td><td>Williams</td><td>25</td></tr>
+                  <tr><td>1.</td><td><a href="#" onclick="showDriverProfile('Zahálka')">Zahálka</a></td><td>RB</td><td>211</td></tr>
+                  <tr><td>2.</td><td><a href="#" onclick="showDriverProfile('Loudil')">Loudil</a></td><td>Mercedes</td><td>148</td></tr>
+                  <tr><td>3.</td><td><a href="#" onclick="showDriverProfile('Svat')">Svat</a></td><td>Ferrari</td><td>145</td></tr>
+                  <tr><td>4.</td><td><a href="#" onclick="showDriverProfile('Borko')">Borko</a></td><td>RB</td><td>122</td></tr>
+                  <tr><td>5.</td><td><a href="#" onclick="showDriverProfile('Neubauer')">Neubauer</a></td><td>Red Bull</td><td>89</td></tr>
+                  <tr><td>6.</td><td><a href="#" onclick="showDriverProfile('Drozd')">Drozd</a></td><td>Alpine</td><td>69</td></tr>
+                  <tr><td>7.</td><td><a href="#" onclick="showDriverProfile('Vaňko')">Vaňko</a></td><td>Mercedes</td><td>68</td></tr>
+                  <tr><td>8.</td><td><a href="#" onclick="showDriverProfile('Korkobec')">Korkobec</a></td><td>Aston Martin</td><td>62</td></tr>
+                  <tr><td>9.</td><td><a href="#" onclick="showDriverProfile('Náhlovský')">Náhlovský</a></td><td>Mercedes</td><td>60</td></tr>
+                  <tr><td>10.</td><td><a href="#" onclick="showDriverProfile('Beran')">Beran</a></td><td>Red Bull</td><td>57</td></tr>
+                  <tr><td>11.</td><td><a href="#" onclick="showDriverProfile('Košek')">Košek</a></td><td>McLaren</td><td>57</td></tr>
+                  <tr><td>12.</td><td><a href="#" onclick="showDriverProfile('Čermák')">Čermák</a></td><td>Alpine</td><td>53</td></tr>
+                  <tr><td>13.</td><td><a href="#" onclick="showDriverProfile('Nic')">Nic</a></td><td>Aston Martin</td><td>52</td></tr>
+                  <tr><td>14.</td><td><a href="#" onclick="showDriverProfile('Valášek')">Valášek</a></td><td>Ferrari</td><td>47</td></tr>
+                  <tr><td>15.</td><td><a href="#" onclick="showDriverProfile('Jirčík')">Jirčík</a></td><td>Haas</td><td>42</td></tr>
+                  <tr><td>16.</td><td><a href="#" onclick="showDriverProfile('Jarschel')">Jarschel</a></td><td>Sauber</td><td>36</td></tr>
+                  <tr><td>17.</td><td><a href="#" onclick="showDriverProfile('Petřík')">Petřík</a></td><td>McLaren</td><td>34</td></tr>
+                  <tr><td>18.</td><td><a href="#" onclick="showDriverProfile('Ondrejka')">Ondrejka</a></td><td>Rezerva</td><td>33</td></tr>
+                  <tr><td>19.</td><td><a href="#" onclick="showDriverProfile('Kubel')">Kubel</a></td><td>Rezerva</td><td>25</td></tr>
+                  <tr><td>20.</td><td><a href="#" onclick="showDriverProfile('Stašík')">Stašík</a></td><td>Williams</td><td>25</td></tr>
                 </tbody>
               </table>
+            </div>
+          </div>
+
+          <div id="driverProfileModal" class="modal">
+            <div class="modal-content">
+              <span class="close-button" onclick="closeDriverProfile()">&times;</span>
+              <h2 id="driverName"></h2>
+              <p><strong>Tým:</strong> <span id="driverTeam"></span></p>
+              <p><strong>Body:</strong> <span id="driverPoints"></span></p>
+              <p><strong>V lize od:</strong> <span id="driverTenure"></span></p>
+              <p id="driverBio"></p>
             </div>
           </div>
 
@@ -580,8 +657,6 @@
             Your browser does not support the video tag.
           </video>
         </div>
-        
-
 
         <button class="btn" onclick="toggleVisibility('calendar-img')">
           📅 Kalendář
@@ -607,6 +682,7 @@
     </div>
   </div>
 
+  <script src="driver_data.js"></script>
   <script>
     function toggleVisibility(id) {
       const el = document.getElementById(id);
@@ -618,6 +694,41 @@
         el.classList.remove('active');
       } else {
         el.classList.add('active');
+      }
+    }
+
+    function showDriverProfile(driver) {
+      const modal = document.getElementById('driverProfileModal');
+      const driverNameEl = document.getElementById('driverName');
+      const driverTeamEl = document.getElementById('driverTeam');
+      const driverPointsEl = document.getElementById('driverPoints');
+      const driverTenureEl = document.getElementById('driverTenure');
+      const driverBioEl = document.getElementById('driverBio');
+
+      const data = driverData[driver];
+
+      if (data) {
+        driverNameEl.textContent = driver;
+        driverTeamEl.textContent = data.team;
+        driverPointsEl.textContent = data.points;
+        driverTenureEl.textContent = data.tenure;
+        driverBioEl.textContent = data.bio;
+        modal.style.display = 'block';
+      } else {
+        console.error('Driver data not found for:', driver);
+      }
+    }
+
+    function closeDriverProfile() {
+      const modal = document.getElementById('driverProfileModal');
+      modal.style.display = 'none';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById('driverProfileModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
       }
     }
 
