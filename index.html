@@ -4,219 +4,598 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Glow League Racing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --primary-bg: #0a0a0f;
+      --secondary-bg: #1a1a2e;
+      --accent-bg: #16213e;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-primary: #ffffff;
+      --text-secondary: #b8bcc8;
+      --accent-primary: #6366f1;
+      --accent-secondary: #8b5cf6;
+      --accent-tertiary: #06b6d4;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --border-radius: 12px;
+      --border-radius-lg: 16px;
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 0.75rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      --spacing-2xl: 3rem;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #1f1c2c, #928dab);
-      color: white;
-      display: flex;
+      box-sizing: border-box;
     }
-    .left-half {
-      width: 50%;
-      padding: 20px;
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-    .right-half {
-      width: 50%;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-lg);
     }
+
+    /* Header Styles */
     header {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 20px;
+      background: rgba(26, 26, 46, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--card-border);
+      padding: var(--spacing-lg) 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      gap: var(--spacing-lg);
     }
-    header img.logo {
-      height: 50px;
+
+    .logo {
+      height: 48px;
+      transition: transform 0.3s ease;
     }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
     .socials {
       display: flex;
-      gap: 20px;
+      gap: var(--spacing-lg);
       align-items: center;
+      flex-wrap: wrap;
     }
-    .socials a {
-      color: white;
+
+    .social-link {
+      color: var(--text-secondary);
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      font-size: 0.875rem;
+      transition: all 0.3s ease;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--border-radius);
+      border: 1px solid transparent;
     }
+
+    .social-link:hover {
+      color: var(--accent-primary);
+      background: rgba(99, 102, 241, 0.1);
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+
+    .partner-section {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
     .starprint-logo {
-      height: 40px;
+      height: 32px;
+      transition: transform 0.3s ease;
     }
-    h1, h2 {
-      color: #fff;
-      border-bottom: 2px solid #444;
-      padding-bottom: 5px;
+
+    .starprint-logo:hover {
+      transform: scale(1.1);
     }
-    .highlight-box {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 15px;
-      margin: 15px 0;
+
+    /* Main Layout */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-2xl);
+      padding: var(--spacing-2xl) 0;
+      min-height: calc(100vh - 120px);
     }
-    .highlight-box.latest {
-      background: rgba(255, 0, 255, 0.2);
-      border: 2px solid hotpink;
-      box-shadow: 0 0 15px hotpink;
+
+    /* Title Banner */
+    .title-banner {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      text-align: center;
+      padding: var(--spacing-xl);
+      border-radius: var(--border-radius-lg);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-xl);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
     }
+
+    .title-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* Cards and Sections */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .card.highlight {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(99, 102, 241, 0.1));
+      border-color: var(--accent-secondary);
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    }
+
+    /* Buttons */
+    .btn {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      border: none;
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      width: 100%;
+      justify-content: center;
+      margin-bottom: var(--spacing-md);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    /* Toggle Content */
     .toggle-content {
-      display: none;
-      margin-top: 10px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
     }
+
+    .toggle-content.active {
+      max-height: 2000px;
+      opacity: 1;
+      margin-top: var(--spacing-md);
+    }
+
+    /* Table Styles */
+    .table-container {
+      overflow-x: auto;
+      border-radius: var(--border-radius);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
     }
-    table, th, td {
-      border: 1px solid #555;
-    }
+
     th, td {
-      padding: 10px;
+      padding: var(--spacing-md);
       text-align: left;
+      border-bottom: 1px solid var(--card-border);
     }
-    .clickable-title {
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px;
-      border-radius: 10px;
-      margin-top: 10px;
+
+    th {
+      background: rgba(255, 255, 255, 0.05);
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
-    .btn-image-toggle {
-      background: linear-gradient(to right, #00f, #a0f);
-      color: white;
-      font-weight: bold;
-      border: none;
-      padding: 10px;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00f;
-      font-size: 1.1em;
+
+    td {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
     }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Image Styles */
+    .image-section {
+      margin-bottom: var(--spacing-lg);
+    }
+
     .image-section img {
-      max-width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      width: 100%;
+      height: auto;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-lg);
+      transition: transform 0.3s ease;
     }
-    .title-banner {
-      font-size: 28px;
-      text-align: center;
-      padding: 10px;
-      background: linear-gradient(90deg, #00f, #a0f);
-      color: white;
-      font-weight: bold;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 10px #00f;
+
+    .image-section img:hover {
+      transform: scale(1.02);
     }
+
+    /* Collaboration Banner */
     .collab-banner {
+      background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-primary));
+      color: white;
       text-align: center;
-      margin-top: 20px;
-      font-size: 18px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px;
-      border-radius: 10px;
+      padding: var(--spacing-lg);
+      border-radius: var(--border-radius-lg);
+      font-weight: 600;
+      margin: var(--spacing-xl) 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Section Headings */
+    .section-heading {
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-md);
+      padding-bottom: var(--spacing-sm);
+      border-bottom: 2px solid var(--accent-primary);
+      position: relative;
+    }
+
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--accent-secondary);
+    }
+
+    /* Champions List */
+    .champions-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .champion-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-md);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--success);
+    }
+
+    .champion-name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .champion-details {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+      }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .socials {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 var(--spacing-md);
+      }
+      
+      .main-layout {
+        padding: var(--spacing-lg) 0;
+      }
+      
+      .title-banner {
+        font-size: 1.5rem;
+        padding: var(--spacing-lg);
+      }
+      
+      .socials {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+      
+      th, td {
+        padding: var(--spacing-sm);
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .title-banner {
+        font-size: 1.25rem;
+        padding: var(--spacing-md);
+      }
+      
+      .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.75rem;
+      }
+    }
+
+    /* Loading Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* Scroll Animations */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.8s ease-out forwards;
+    }
+
+    .slide-in-right {
+      animation: slideInRight 0.8s ease-out forwards;
     }
   </style>
 </head>
 <body>
-  <div class="left-half">
-    <header>
-      <img src="logo.png" alt="Glow League Logo" class="logo">
-      <div class="socials">
-        <a href="https://www.instagram.com/glow_league_racing" target="_blank">IG @glow_league_racing</a>
-        <a href="https://www.youtube.com/@GlowLeagueRacing" target="_blank">YT @GlowLeagueRacing</a>
-        <span>Partner: <a href="https://www.instagram.com/3dstarprint_sk" target="_blank">@3dstarprint_sk</a></span>
-        <img src="starprint.png" alt="StarPrint Logo" class="starprint-logo">
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <img src="logo.png" alt="Glow League Logo" class="logo">
+        <div class="socials">
+          <a href="https://www.instagram.com/glow_league_racing" target="_blank" class="social-link">
+            📸 @glow_league_racing
+          </a>
+          <a href="https://www.youtube.com/@GlowLeagueRacing" target="_blank" class="social-link">
+            🎥 @GlowLeagueRacing
+          </a>
+          <div class="partner-section">
+            <span>Partner:</span>
+            <a href="https://www.instagram.com/3dstarprint_sk" target="_blank" class="social-link">@3dstarprint_sk</a>
+            <img src="starprint.png" alt="StarPrint Logo" class="starprint-logo">
+          </div>
+        </div>
       </div>
-    </header>
-
-    <div class="title-banner">Glow League Racing S5 – Coming Soon!</div>
-
-    <main>
-      <button class="btn-image-toggle" onclick="toggleVisibility('news')">📢 Novinky</button>
-      <div id="news" class="toggle-content">
-        <section class="highlight-box latest">
-          <h2>🗞️ Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu</h2>
-          <p><strong>Tomáš Stašík</strong> bude obhajovat modré barvy a otazníky pořád zůstávají nad hlavními sedačkami. Tomáš Ševčík pořád neoznámil, že bude pokračovat a zprávy o Kubičkovi nebyly nijak potvrzeny.</p>
-        </section>
-      </div>
-
-      <button class="btn-image-toggle" onclick="toggleVisibility('champions')">🏆 Šampioni</button>
-      <div id="champions" class="toggle-content">
-        <section class="highlight-box">
-          <p><strong>Daniel Borko</strong> – Sezóny 1–3 (<em>Mercedes, Red Bull</em>)</p>
-          <p><strong>Ondřej Zahálka</strong> – Sezóna 4 (<em>RB</em>)</p>
-        </section>
-      </div>
-
-      <button class="btn-image-toggle" onclick="toggleVisibility('standings')">📊 Statistiky jezdců</button>
-      <div id="standings" class="toggle-content">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Jezdec</th>
-              <th>Tým</th>
-              <th>Body</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1.</td><td>Zahálka</td><td>RB</td><td>211</td></tr>
-            <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
-            <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
-            <tr><td>4.</td><td>Borko</td><td>RB</td><td>122</td></tr>
-            <tr><td>5.</td><td>Neubauer</td><td>Red Bull</td><td>89</td></tr>
-            <tr><td>6.</td><td>Drozd</td><td>Alpine</td><td>69</td></tr>
-            <tr><td>7.</td><td>Vaňko</td><td>Mercedes</td><td>68</td></tr>
-            <tr><td>8.</td><td>Korkobec</td><td>Aston Martin</td><td>62</td></tr>
-            <tr><td>9.</td><td>Náhlovský</td><td>Mercedes</td><td>60</td></tr>
-            <tr><td>10.</td><td>Beran</td><td>Red Bull</td><td>57</td></tr>
-            <tr><td>11.</td><td>Košek</td><td>McLaren</td><td>57</td></tr>
-            <tr><td>12.</td><td>Čermák</td><td>Alpine</td><td>53</td></tr>
-            <tr><td>13.</td><td>Nic</td><td>Aston Martin</td><td>52</td></tr>
-            <tr><td>14.</td><td>Valášek</td><td>Ferrari</td><td>47</td></tr>
-            <tr><td>15.</td><td>Jirčík</td><td>Haas</td><td>42</td></tr>
-            <tr><td>16.</td><td>Jarschel</td><td>Sauber</td><td>36</td></tr>
-            <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
-            <tr><td>18.</td><td>Ondrejka</td><td>Rezerva</td><td>33</td></tr>
-            <tr><td>19.</td><td>Kubel</td><td>Rezerva</td><td>25</td></tr>
-            <tr><td>20.</td><td>Stašík</td><td>Williams</td><td>25</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Obrázek win3.jpg pod tlačítky -->
-      <div class="image-section" style="margin-top: 20px;">
-        <img src="win3.jpg" alt="Top 3 vítězové">
-      </div>
-    </main>
-  </div>
-
-  <div class="right-half">
-    <div class="image-section">
-      <img src="track.jpg" alt="Závodní trať">
     </div>
-    <div class="collab-banner">Glow League spolupracuje s <strong>StarPrint</strong></div>
+  </header>
 
-    <button class="btn-image-toggle" onclick="toggleVisibility('calendar-img')">📅 Kalendář</button>
-    <div id="calendar-img" class="image-section toggle-content">
-      <img src="calendar.jpg" alt="Kalendář">
-    </div>
+  <div class="container">
+    <div class="main-layout">
+      <!-- Left Column -->
+      <div class="left-column slide-in-left">
+        <div class="title-banner">
+          🏁 Glow League Racing S5 – Coming Soon!
+        </div>
 
-    <button class="btn-image-toggle" onclick="toggleVisibility('stats-img')">📈 Statistiky</button>
-    <div id="stats-img" class="image-section toggle-content">
-      <img src="con2.jpg" alt="Statistiky">
-    </div>
+        <main>
+          <button class="btn" onclick="toggleVisibility('news')">
+            📢 Novinky
+          </button>
+          <div id="news" class="toggle-content">
+            <div class="card highlight">
+              <h2 class="section-heading">🗞️ Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu</h2>
+              <p><strong>Tomáš Stašík</strong> bude obhajovat modré barvy a otazníky pořád zůstávají nad hlavními sedačkami. Tomáš Ševčík pořád neoznámil, že bude pokračovat a zprávy o Kubičkovi nebyly nijak potvrzeny.</p>
+            </div>
+          </div>
 
-    <button class="btn-image-toggle" onclick="toggleVisibility('lineup-img')">🧑‍🤝‍🧑 Team Line Ups</button>
-    <div id="lineup-img" class="image-section toggle-content">
-      <img src="lineup.jpg" alt="Lineup">
+          <button class="btn" onclick="toggleVisibility('champions')">
+            🏆 Šampioni
+          </button>
+          <div id="champions" class="toggle-content">
+            <div class="card">
+              <div class="champions-list">
+                <div class="champion-item">
+                  <div>
+                    <div class="champion-name">Daniel Borko</div>
+                    <div class="champion-details">Sezóny 1–3</div>
+                  </div>
+                  <div class="champion-details">Mercedes, Red Bull</div>
+                </div>
+                <div class="champion-item">
+                  <div>
+                    <div class="champion-name">Ondřej Zahálka</div>
+                    <div class="champion-details">Sezóna 4</div>
+                  </div>
+                  <div class="champion-details">RB</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn" onclick="toggleVisibility('standings')">
+            📊 Statistiky jezdců
+          </button>
+          <div id="standings" class="toggle-content">
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Jezdec</th>
+                    <th>Tým</th>
+                    <th>Body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1.</td><td>Zahálka</td><td>RB</td><td>211</td></tr>
+                  <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
+                  <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
+                  <tr><td>4.</td><td>Borko</td><td>RB</td><td>122</td></tr>
+                  <tr><td>5.</td><td>Neubauer</td><td>Red Bull</td><td>89</td></tr>
+                  <tr><td>6.</td><td>Drozd</td><td>Alpine</td><td>69</td></tr>
+                  <tr><td>7.</td><td>Vaňko</td><td>Mercedes</td><td>68</td></tr>
+                  <tr><td>8.</td><td>Korkobec</td><td>Aston Martin</td><td>62</td></tr>
+                  <tr><td>9.</td><td>Náhlovský</td><td>Mercedes</td><td>60</td></tr>
+                  <tr><td>10.</td><td>Beran</td><td>Red Bull</td><td>57</td></tr>
+                  <tr><td>11.</td><td>Košek</td><td>McLaren</td><td>57</td></tr>
+                  <tr><td>12.</td><td>Čermák</td><td>Alpine</td><td>53</td></tr>
+                  <tr><td>13.</td><td>Nic</td><td>Aston Martin</td><td>52</td></tr>
+                  <tr><td>14.</td><td>Valášek</td><td>Ferrari</td><td>47</td></tr>
+                  <tr><td>15.</td><td>Jirčík</td><td>Haas</td><td>42</td></tr>
+                  <tr><td>16.</td><td>Jarschel</td><td>Sauber</td><td>36</td></tr>
+                  <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
+                  <tr><td>18.</td><td>Ondrejka</td><td>Rezerva</td><td>33</td></tr>
+                  <tr><td>19.</td><td>Kubel</td><td>Rezerva</td><td>25</td></tr>
+                  <tr><td>20.</td><td>Stašík</td><td>Williams</td><td>25</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="image-section">
+            <img src="win3.jpg" alt="Top 3 vítězové">
+          </div>
+        </main>
+      </div>
+
+      <!-- Right Column -->
+      <div class="right-column slide-in-right">
+        <div class="image-section">
+          <img src="track.jpg" alt="Závodní trať">
+        </div>
+        
+        <div class="collab-banner">
+          🤝 Glow League spolupracuje s <strong>StarPrint</strong>
+        </div>
+
+        <button class="btn" onclick="toggleVisibility('calendar-img')">
+          📅 Kalendář
+        </button>
+        <div id="calendar-img" class="image-section toggle-content">
+          <img src="calendar.jpg" alt="Kalendář">
+        </div>
+
+        <button class="btn" onclick="toggleVisibility('stats-img')">
+          📈 Statistiky
+        </button>
+        <div id="stats-img" class="image-section toggle-content">
+          <img src="con2.jpg" alt="Statistiky">
+        </div>
+
+        <button class="btn" onclick="toggleVisibility('lineup-img')">
+          🧑‍🤝‍🧑 Team Line Ups
+        </button>
+        <div id="lineup-img" class="image-section toggle-content">
+          <img src="lineup.jpg" alt="Lineup">
+        </div>
+      </div>
     </div>
   </div>
 
@@ -224,13 +603,38 @@
     function toggleVisibility(id) {
       const el = document.getElementById(id);
       if (!el) return;
-      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+      
+      const isActive = el.classList.contains('active');
+      
+      if (isActive) {
+        el.classList.remove('active');
+      } else {
+        el.classList.add('active');
+      }
     }
+
+    // Add scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards for animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        observer.observe(card);
+      });
+    });
   </script>
 </body>
 </html>
-
-
-
-
 
