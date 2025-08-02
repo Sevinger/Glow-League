@@ -88,13 +88,15 @@
       margin-top: 10px;
     }
     .btn-image-toggle {
-      background: #fff;
-      color: #333;
+      background: linear-gradient(to right, #00f, #a0f);
+      color: white;
       font-weight: bold;
       border: none;
       padding: 10px;
       border-radius: 10px;
       cursor: pointer;
+      box-shadow: 0 0 10px #00f;
+      font-size: 1.1em;
     }
     .image-section img {
       max-width: 100%;
@@ -111,6 +113,14 @@
       border-radius: 10px;
       margin-bottom: 20px;
       box-shadow: 0 0 10px #00f;
+    }
+    .collab-banner {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -129,76 +139,84 @@
     <div class="title-banner">Glow League Racing S5 – Coming Soon!</div>
 
     <main>
-      <section class="highlight-box latest">
-        <h2>🗞️ Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu</h2>
-        <p><strong>Tomáš Stašík</strong> bude obhajovat modré barvy a otazníky pořád zůstávají nad hlavními sedačkami. Tomáš Ševčík pořád neoznámil, že bude pokračovat a zprávy o Kubičkovi nebyly nijak potvrzeny.</p>
-      </section>
+      <button class="btn-image-toggle" onclick="toggleVisibility('news')">📢 Novinky</button>
+      <div id="news" class="toggle-content">
+        <section class="highlight-box latest">
+          <h2>🗞️ Williams zveřejnil Jméno rezervního jezdce pro 5. sezonu</h2>
+          <p><strong>Tomáš Stašík</strong> bude obhajovat modré barvy a otazníky pořád zůstávají nad hlavními sedačkami. Tomáš Ševčík pořád neoznámil, že bude pokračovat a zprávy o Kubičkovi nebyly nijak potvrzeny.</p>
+        </section>
+      </div>
 
-      <section>
-        <h2 onclick="toggleVisibility('news')">📢 Novinky</h2>
-        <div id="news" class="toggle-content">
-          <p>(Sem můžeš později přidat další novinky)</p>
-        </div>
-      </section>
-
-      <section>
-        <h2>🏆 Šampioni</h2>
-        <div class="highlight-box">
+      <button class="btn-image-toggle" onclick="toggleVisibility('champions')">🏆 Šampioni</button>
+      <div id="champions" class="toggle-content">
+        <section class="highlight-box">
           <p><strong>Daniel Borko</strong> – Sezóny 1–3 (<em>Mercedes, Red Bull</em>)</p>
           <p><strong>Ondřej Zahálka</strong> – Sezóna 4 (<em>RB</em>)</p>
-        </div>
-      </section>
+        </section>
+      </div>
 
-      <section>
-        <h2 onclick="toggleVisibility('standings')">📊 Statistiky jezdců</h2>
-        <div id="standings" class="toggle-content">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Jezdec</th>
-                <th>Tým</th>
-                <th>Body</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>1.</td><td>Zahálka</td><td>RB</td><td>211</td></tr>
-              <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
-              <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
-              <tr><td>4.</td><td>Borko</td><td>RB</td><td>122</td></tr>
-              <tr><td>5.</td><td>Neubauer</td><td>Red Bull</td><td>89</td></tr>
-              <tr><td>6.</td><td>Drozd</td><td>Alpine</td><td>69</td></tr>
-              <tr><td>7.</td><td>Vaňko</td><td>Mercedes</td><td>68</td></tr>
-              <tr><td>8.</td><td>Korkobec</td><td>Aston Martin</td><td>62</td></tr>
-              <tr><td>9.</td><td>Náhlovský</td><td>Mercedes</td><td>60</td></tr>
-              <tr><td>10.</td><td>Beran</td><td>Red Bull</td><td>57</td></tr>
-              <tr><td>11.</td><td>Košek</td><td>McLaren</td><td>57</td></tr>
-              <tr><td>12.</td><td>Čermák</td><td>Alpine</td><td>53</td></tr>
-              <tr><td>13.</td><td>Nic</td><td>Aston Martin</td><td>52</td></tr>
-              <tr><td>14.</td><td>Valášek</td><td>Ferrari</td><td>47</td></tr>
-              <tr><td>15.</td><td>Jirčík</td><td>Haas</td><td>42</td></tr>
-              <tr><td>16.</td><td>Jarschel</td><td>Sauber</td><td>36</td></tr>
-              <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
-              <tr><td>18.</td><td>Ondrejka</td><td>Rezerva</td><td>33</td></tr>
-              <tr><td>19.</td><td>Kubel</td><td>Rezerva</td><td>25</td></tr>
-              <tr><td>20.</td><td>Stašík</td><td>Williams</td><td>25</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+      <button class="btn-image-toggle" onclick="toggleVisibility('standings')">📊 Statistiky jezdců</button>
+      <div id="standings" class="toggle-content">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Jezdec</th>
+              <th>Tým</th>
+              <th>Body</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1.</td><td>Zahálka</td><td>RB</td><td>211</td></tr>
+            <tr><td>2.</td><td>Loudil</td><td>Mercedes</td><td>148</td></tr>
+            <tr><td>3.</td><td>Svat</td><td>Ferrari</td><td>145</td></tr>
+            <tr><td>4.</td><td>Borko</td><td>RB</td><td>122</td></tr>
+            <tr><td>5.</td><td>Neubauer</td><td>Red Bull</td><td>89</td></tr>
+            <tr><td>6.</td><td>Drozd</td><td>Alpine</td><td>69</td></tr>
+            <tr><td>7.</td><td>Vaňko</td><td>Mercedes</td><td>68</td></tr>
+            <tr><td>8.</td><td>Korkobec</td><td>Aston Martin</td><td>62</td></tr>
+            <tr><td>9.</td><td>Náhlovský</td><td>Mercedes</td><td>60</td></tr>
+            <tr><td>10.</td><td>Beran</td><td>Red Bull</td><td>57</td></tr>
+            <tr><td>11.</td><td>Košek</td><td>McLaren</td><td>57</td></tr>
+            <tr><td>12.</td><td>Čermák</td><td>Alpine</td><td>53</td></tr>
+            <tr><td>13.</td><td>Nic</td><td>Aston Martin</td><td>52</td></tr>
+            <tr><td>14.</td><td>Valášek</td><td>Ferrari</td><td>47</td></tr>
+            <tr><td>15.</td><td>Jirčík</td><td>Haas</td><td>42</td></tr>
+            <tr><td>16.</td><td>Jarschel</td><td>Sauber</td><td>36</td></tr>
+            <tr><td>17.</td><td>Petřík</td><td>McLaren</td><td>34</td></tr>
+            <tr><td>18.</td><td>Ondrejka</td><td>Rezerva</td><td>33</td></tr>
+            <tr><td>19.</td><td>Kubel</td><td>Rezerva</td><td>25</td></tr>
+            <tr><td>20.</td><td>Stašík</td><td>Williams</td><td>25</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Obrázek win3.jpg pod tlačítky -->
+      <div class="image-section" style="margin-top: 20px;">
+        <img src="win3.jpg" alt="Top 3 vítězové">
+      </div>
     </main>
   </div>
 
   <div class="right-half">
+    <div class="image-section">
+      <img src="track.jpg" alt="Závodní trať">
+    </div>
+    <div class="collab-banner">Glow League spolupracuje s <strong>StarPrint</strong></div>
+
     <button class="btn-image-toggle" onclick="toggleVisibility('calendar-img')">📅 Kalendář</button>
     <div id="calendar-img" class="image-section toggle-content">
       <img src="calendar.jpg" alt="Kalendář">
     </div>
 
-    <button class="btn-image-toggle" onclick="toggleVisibility('teams-img')">📈 Statistiky & Týmy</button>
-    <div id="teams-img" class="image-section toggle-content">
-      <img src="con.jpg" alt="Statistiky 1">
-      <img src="con2.jpg" alt="Statistiky 2">
+    <button class="btn-image-toggle" onclick="toggleVisibility('stats-img')">📈 Statistiky</button>
+    <div id="stats-img" class="image-section toggle-content">
+      <img src="con2.jpg" alt="Statistiky">
+    </div>
+
+    <button class="btn-image-toggle" onclick="toggleVisibility('lineup-img')">🧑‍🤝‍🧑 Team Line Ups</button>
+    <div id="lineup-img" class="image-section toggle-content">
+      <img src="lineup.jpg" alt="Lineup">
     </div>
   </div>
 
@@ -211,4 +229,8 @@
   </script>
 </body>
 </html>
+
+
+
+
 
